@@ -49,6 +49,21 @@ public class PatronTest
 					   "C1\nTitle: Fun with Objects\nChecked Out To: Eric, Copy" +
 					   " ID: C2\nTitle: More Fun with Objects\nChecked Out To: Eric]");
 		
+		StdOut.println("=============================================================");
+		StdOut.println("==============  CHECKING IN SECOND COPY ...  ===============");
+		StdOut.println("=============================================================");
+		p.checkCopyIn(db.getCopy("C2"));
+		StdOut.println(s = (p = db.getPatron("P1")).toString());
+		assertEquals(s,"Patron ID: P1\nName: Eric\nBooks Borrowing: [Copy ID: " +
+					   "C1\nTitle: Fun with Objects\nChecked Out To: Eric]");
+		
+		StdOut.println("=============================================================");
+		StdOut.println("==============  CHECKING IN FIRST COPY ...  ===============");
+		StdOut.println("=============================================================");
+		p.checkCopyIn(db.getCopy("C1"));
+		StdOut.println(s = (p = db.getPatron("P1")).toString());
+		assertEquals(s,"Patron ID: P1\nName: Eric\nBooks Borrowing: []");
+		
 		StdOut.println("Patron Test - TP_1: Exploration and Beginning Implementation");
 		StdOut.println("End of Test");
 	}
