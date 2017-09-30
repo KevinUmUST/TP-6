@@ -16,39 +16,71 @@ public class Patron
 {
 	private String name;
 	private String patronID;
+	public String getName() {
+		return name;
+	}
+
+	public void setName(String name) {
+		this.name = name;
+	}
+
+	public String getPatronID() {
+		return patronID;
+	}
+
+	public void setPatronID(String patronID) {
+		this.patronID = patronID;
+	}
+
+	public ArrayList<Copy> getCopiesOut() {
+		return copiesOut;
+	}
+
+	public void setCopiesOut(ArrayList<Copy> copiesOut) {
+		this.copiesOut = copiesOut;
+	}
+
 	private ArrayList<Copy> copiesOut;
 
 	public Patron(String id, String name)
 	{
-		// finish this
+		this.patronID = id;
+		this.name = name;
+		this.copiesOut = new ArrayList<Copy>();
 	}
 
 	public boolean checkCopyOut(Copy c)
 	{
-		// finish this
-
-		return false;
+		if (!c.checkedOut())
+		{
+			c.setOutTo(this);
+			copiesOut.add(c);
+			return true;
+		}
+		else return false;
 	}
 
 	public boolean checkCopyIn(Copy c)
 	{
-		// finish this
-		return false;
+		if(c.getOutTo().equals(this))
+		{
+			c.setOutTo(null);
+			copiesOut.remove(c);
+			return true;
+		}
+		else return false;
 	}
 
 	@Override
 	public boolean equals(Object o)
 	{
-		// finish this: two are equals iff same patron ID
-
-		return false;
+		return ((o instanceof Patron) && (((Patron) o).getPatronID() == this.patronID));
 	}
 
 	public String toString()
 	{
-		// finish this: return basic Patron info as String
-
-		return "A description of this Patron's current state.";
+		return "Patron ID: " + this.patronID + "\nName: " + this.name + 
+				   "\nBooks Borrowing: " + copiesOut.toString();
 	}
 
 	// put test code in your main(), but realize it's not unit testing!

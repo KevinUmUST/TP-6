@@ -16,26 +16,52 @@ public class Copy
 
 	public Copy(String copyID, String title)
 	{
-		// finish this
+		this.copyID = copyID;
+		this.title = title;
+		this.outTo = null;
 	}
 
-	// generate getters and setters using Eclipse Source menu
+	public String getCopyID() {
+		return copyID;
+	}
+
+	public void setCopyID(String copyID) {
+		this.copyID = copyID;
+	}
+
+	public Patron getOutTo() {
+		return outTo;
+	}
+
+	public void setOutTo(Patron outTo) {
+		this.outTo = outTo;
+	}
+
+	public String getTitle() {
+		return title;
+	}
+
+	public void setTitle(String title) {
+		this.title = title;
+	}
 
 	public String toString()
 	{
-		// correctly implement this
-		return "A description of this Copy's current state.";
+		String patron = (outTo == null) ? "(Not Checked Out)" : this.outTo.getName();
+		return "Copy ID: " + this.copyID + "\nTitle: " + this.title + 
+			   "\nChecked Out To: " + patron;
+	}
+	
+	public boolean checkedOut()
+	{
+		return outTo != null;
 	}
 
 	@Override
 	public boolean equals(Object o)
 	{
-		// finish this: two are equals iff same copy ID
-
-		return false;
+		return ((o instanceof Copy) && (((Copy) o).getCopyID() == this.copyID));
 	}
-
-	// put test code in your main(), but realize it's not unit testing!
 
 	public static void main(String[] args)
 	{
