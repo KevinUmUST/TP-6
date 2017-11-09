@@ -1,12 +1,9 @@
 /**
+ * 	Copy
  * 
- * Starting class for TP-1
+ * 	Describes a copy of a library item.
  * 
- * Feel free to add, modify, or delete any of the following code: it's just a
- * possible starting implementation
- * 
- * @author eric
- *
+ *	@author
  */
 public class Copy
 {

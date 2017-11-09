@@ -16,6 +16,17 @@ public class Patron
 {
 	private String name;
 	private String patronID;
+	private ArrayList<Copy> copiesOut;
+	private ArrayList<Hold> holds;
+	
+	public Patron(String id, String name)
+	{
+		this.patronID = id;
+		this.name = name;
+		this.copiesOut = new ArrayList<Copy>();
+		this.holds = new ArrayList<Hold>();
+	}
+	
 	public String getName() {
 		return name;
 	}
@@ -39,14 +50,9 @@ public class Patron
 	public void setCopiesOut(ArrayList<Copy> copiesOut) {
 		this.copiesOut = copiesOut;
 	}
-
-	private ArrayList<Copy> copiesOut;
-
-	public Patron(String id, String name)
-	{
-		this.patronID = id;
-		this.name = name;
-		this.copiesOut = new ArrayList<Copy>();
+	
+	public Integer numHolds(){
+		return holds.size();
 	}
 
 	public boolean checkCopyOut(Copy c)
@@ -82,8 +88,6 @@ public class Patron
 		return "Patron ID: " + this.patronID + "\nName: " + this.name + 
 				   "\nBooks Borrowing: " + copiesOut.toString();
 	}
-
-	// put test code in your main(), but realize it's not unit testing!
 
 	public static void main(String[] args)
 	{
