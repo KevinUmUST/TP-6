@@ -49,7 +49,7 @@ public class TRLApp {
 				+ "\n\n"
 				+ "Starting textbook rental system..."
 				+ "\n\n");
-		TimeUnit.SECONDS.sleep(2);	
+		TimeUnit.SECONDS.sleep(1);	
 		//gui.clearScreen();
 	}
 	
