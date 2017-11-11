@@ -7,7 +7,8 @@ public class GUImenu {
 	
 	public GUImenu(){
 		menuItems.add(new GUImenuItem(1, "CHECK OUT"));
-		menuItems.add(new GUImenuItem(2, "QUIT"));
+		menuItems.add(new GUImenuItem(2, "PATRON ACCOUNT INFO"));
+		menuItems.add(new GUImenuItem(3, "QUIT"));
 	}
 	
 	public void display(){

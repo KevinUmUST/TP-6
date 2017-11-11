@@ -86,7 +86,7 @@ public class Patron
 	public String toString()
 	{
 		return "Patron ID: " + this.patronID + "\nName: " + this.name + 
-				   "\nBooks Borrowing: " + copiesOut.toString();
+				   "\nBooks Borrowing: " + copiesOut.toString() + "\n";
 	}
 
 	public static void main(String[] args)

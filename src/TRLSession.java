@@ -32,4 +32,16 @@ public class TRLSession {
 	public String getPatronID(){
 		return sessionPatronID;
 	}
+	
+	public String getPatronInfo(String patronID){
+		return TRLSystem.getPatronInfo(patronID);
+	}
+	
+	public String getPatronInfo(){
+		return TRLSystem.getPatronInfo(sessionPatronID);
+	}
+	
+	public String getCopyInfo(String copyID){
+		return TRLSystem.getCopyInfo(copyID);
+	}
 }

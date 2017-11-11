@@ -4,9 +4,10 @@ import java.util.concurrent.TimeUnit;
 
 public class TRLApp {
 
-	// Refactor this into an enum
-	static final int QUIT = 0;
+	// Refactor this to use the GUI definitions of menu IDs.....
+	static final int QUIT = 3;
 	static final int CHECK_OUT = 1;
+	static final int PATRON_INFO = 2;
 	
 	private static GUImain gui;
 	private static TRLSession session;
@@ -86,8 +87,17 @@ public class TRLApp {
 				case QUIT:
 					break;
 				case CHECK_OUT:
+					gui.clearScreen();
 					session.checkOutCopy(session.getPatronID(), requestCopyID());
+					gui.pauseContinue();
+					gui.clearScreen();
 					break;
+				case PATRON_INFO:
+					gui.clearScreen();
+					System.out.println("Patron Account Information \n\n");
+					System.out.println(session.getPatronInfo());
+					gui.pauseContinue();
+					gui.clearScreen();
 			}
 		}
 	}

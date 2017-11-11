@@ -29,4 +29,9 @@ public class GUImain {
 		System.out.print("> ");
 		return br.readLine();
 	}
+	
+	public void pauseContinue() throws IOException{
+		System.out.println("Press any key to continue.\n");
+		br.readLine();
+	}
 }

@@ -46,7 +46,7 @@ public class Copy
 	{
 		String patron = (outTo == null) ? "(Not Checked Out)" : this.outTo.getName();
 		return "Copy ID: " + this.copyID + "\nTitle: " + this.title + 
-			   "\nChecked Out To: " + patron;
+			   "\nChecked Out To: " + patron + "\n";
 	}
 	
 	public boolean checkedOut()

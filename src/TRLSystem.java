@@ -40,7 +40,7 @@ public class TRLSystem {
 		}
 	
 		// Perform Check Out Operation 
-		System.out.println("Checking out " + copyID + " to " + patronID + "...");
+		System.out.println("Checking out " + copyID + " to " + patronID + "...\n");
 		if(TRLLibrary.checkOut(patronID, copyID)){
 			System.out.println("Operation Complete.\n");
 			return TRLReturnType.SUCCESS;
@@ -60,5 +60,27 @@ public class TRLSystem {
 	 */
 	public boolean canCheckOut(String patronID){
 		return TRLLibrary.hasHold(patronID);
+	}
+	
+	/**
+	 *	getCopyInfo
+	 *	Returns a description of the given library Copy.
+	 *
+	 *  @param	copyID		Patron ID string of the patron to be checked.
+	 *  @return				Copy text description.
+	 */
+	public String getCopyInfo(String copyID){
+		return TRLLibrary.getCopy(copyID).toString();
+	}
+	
+	/**
+	 *	getPatronInfo
+	 *	Returns a description of the given library Copy.
+	 *
+	 *  @param	patronID	Patron ID string of the patron to be checked.
+	 *  @return				Patron text description.
+	 */
+	public String getPatronInfo(String patronID){
+		return TRLLibrary.getPatron(patronID).toString();
 	}
 }
