@@ -15,10 +15,21 @@ public class TRLApp {
 	public static void main(String[] args) throws IOException, InterruptedException {
 		gui = new GUImain();
 		init();
-		session = new TRLSession(requestPatronID());
-		gui.clearScreen();
-		runMainMenu();
-
+		while(true){
+			boolean notdone = true;
+			while(notdone){
+				try {
+					System.out.println("Please enter the Patron's ID.");
+					session = new TRLSession(gui.getUserInput());
+					notdone = false;
+				}
+				catch (Exception e){
+					System.out.println("\nInvalid Patron ID. Please try again.\n");
+				}
+			}
+			gui.clearScreen();
+			runMainMenu();
+		}
 	}
 
 	private static void init() throws InterruptedException{
@@ -38,14 +49,16 @@ public class TRLApp {
 				+ "\n\n"
 				+ "Starting textbook rental system..."
 				+ "\n\n");
-		TimeUnit.SECONDS.sleep(3);	
+		TimeUnit.SECONDS.sleep(2);	
 		//gui.clearScreen();
 	}
 	
 	private static String requestPatronID() throws IOException{
 		System.out.println("Please enter the Patron's ID.");
-		String id = gui.getUserInput();
-		// Validate id...
+		String id;
+		while(!session.validatePatron(id = gui.getUserInput())){
+			System.out.println("Invalid Patron ID. Please try again.\n");
+		}
 		return id;
 	}
 	
@@ -85,6 +98,7 @@ public class TRLApp {
 			
 			switch(cmdInt){
 				case QUIT:
+					gui.clearScreen();
 					break;
 				case CHECK_OUT:
 					gui.clearScreen();

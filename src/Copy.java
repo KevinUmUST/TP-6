@@ -60,14 +60,4 @@ public class Copy
 		return ((o instanceof Copy) && (((Copy) o).getCopyID() == this.copyID));
 	}
 
-	public static void main(String[] args)
-	{
-		Copy c1 = new Copy("C1", "Fun with Objects");
-		Patron p1 = new Patron("Eric", "P47");
-
-		System.out.println(c1);
-		System.out.println(p1);
-
-		Copy c2 = FakeDB.getCopy("C2");
-	}
 }

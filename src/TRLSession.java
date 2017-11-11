@@ -14,13 +14,44 @@ public class TRLSession {
 	
 	private boolean canCheckOut;
 	private boolean workerValidated = false; 
-	
-	TRLSession(String patronID){
+
+	/**
+	 * 	Constructor
+	 * 
+	 * @param patronID
+	 * @throws Exception 
+	 */
+	TRLSession(String patronID) throws Exception {
 		TRLSystem = new TRLSystem();
-		sessionPatronID = patronID;
-		canCheckOut = TRLSystem.canCheckOut(patronID);
+		if(validatePatron(patronID)){
+			sessionPatronID = patronID;
+			canCheckOut = TRLSystem.canCheckOut(patronID);
+		}
+		else throw new Exception();
 	}
 
+	/**
+	 * 	validatePatron
+	 * 	Validates a Patron ID to see if the account exists.
+	 * 
+	 * @param patronID
+	 * @return
+	 */
+	public boolean validatePatron(String patronID){
+		return (TRLSystem.checkPatronID(patronID) == TRLReturnType.SUCCESS);
+	}
+	
+	/**
+	 *  validateCopy
+	 *  Validates a Copy ID to see if the copy exists in the library.
+	 *
+	 * @param copyID
+	 * @return
+	 */
+	public boolean validateCopy(String copyID){
+		return (TRLSystem.checkCopyID(copyID) == TRLReturnType.SUCCESS);
+	}
+	
 	/**
 	 *	checkOutCopy
 	 *	Performs check out operation.

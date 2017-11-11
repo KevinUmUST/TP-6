@@ -99,14 +99,4 @@ public class Patron
 				   "\nBooks Borrowing: " + copiesOut.toString() + "\nHolds: " + holds.toString() + "\n";
 	}
 
-	public static void main(String[] args)
-	{
-		Patron p1 = new Patron("P47", "Eric");
-
-		System.out.println(p1);
-
-		Patron p2 = FakeDB.getPatron("P47");
-		Copy c1 = FakeDB.getCopy("C1");
-	}
-
 }

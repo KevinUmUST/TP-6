@@ -19,6 +19,39 @@ public class TRLSystem {
 	}
 	
 	/* Class Methods */
+
+	/**
+	 *	checkPatronID
+	 *	Checks if the supplied Patron ID exists in the library.
+	 * 
+	 * @param 	patronID	The Patron ID to be checked. 
+	 * @return				SUCCESS 		 	Patron ID exists in the library.
+	 * 						PATRON_NOT_FOUND 	Patron ID does not exist in
+	 * 											the library.
+	 */
+	public TRLReturnType checkPatronID(String patronID){
+		if(TRLLibrary.getPatron(patronID) == null){
+			return TRLReturnType.PATRON_NOT_FOUND;
+		}
+		else return TRLReturnType.SUCCESS;
+	}
+
+	/**
+	 *	checkCopyID 
+	 *	Checks if the supplied Copy ID exists in the library.
+	 *
+	 * @param copyID
+	 * @return				SUCCESS 		 	Copy ID exists in the library.
+	 * 						COPY_NOT_FOUND 		Copy ID does not exist in
+	 * 											the library.
+	 */
+	public TRLReturnType checkCopyID(String copyID){
+		if(TRLLibrary.getCopy(copyID) == null){
+			return TRLReturnType.COPY_NOT_FOUND;
+		}
+		else return TRLReturnType.SUCCESS;
+	}
+	
 	
 	/**
 	 * 	checkOut
@@ -30,16 +63,15 @@ public class TRLSystem {
 	 * 	@return				true if successful, false if failed to check out
 	 */
 	public TRLReturnType checkOut(String patronID, String copyID){
-		
-		// Validate inputs
-		if(TRLLibrary.getPatron(patronID) == null){
-			return TRLReturnType.PATRON_NOT_FOUND;
-		}
-		else if(TRLLibrary.getCopy(copyID) == null){
-			return TRLReturnType.COPY_NOT_FOUND;
+
+		// Validate Inputs
+		TRLReturnType returnValue;
+		if( ((returnValue = checkPatronID(patronID)) != TRLReturnType.SUCCESS) ||
+			((returnValue = checkCopyID(copyID)) != TRLReturnType.SUCCESS) ){
+			return returnValue; 
 		}
 	
-		// Perform Check Out Operation 
+		// Perform Check Out Operation
 		System.out.println("\nChecking out " + copyID + " to " + patronID + "...\n");
 		if(TRLLibrary.checkOut(patronID, copyID)){
 			System.out.println("Operation Complete.\n");
