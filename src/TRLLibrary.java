@@ -14,7 +14,10 @@ public class TRLLibrary {
 
 	private static Map<String, Patron> patronStore;
 	private static Map<String, Copy> copyStore;
-	
+
+	/**
+	 * 	Static Initialization
+	 */
 	static
 	{
 		patronStore = new HashMap<String, Patron>();
@@ -25,16 +28,39 @@ public class TRLLibrary {
 		copyStore.put("C2", new Copy("C2", "More Fun with Objects"));
 	}
 
+	/**
+	 * 	getPatron
+	 * 	Returns a Patron object for a given patron ID.
+	 * 
+	 * @param patronID
+	 * @return Patron object.
+	 */
 	public static Patron getPatron(String patronID)
 	{
 		return patronStore.get(patronID);
 	}
 
+	/**
+	 *  getCopy
+	 *  Returns a Copy object for a given copy ID.
+	 *  
+	 * @param copyID
+	 * @return
+	 */
 	public static Copy getCopy(String copyID)
 	{
 		return copyStore.get(copyID);
 	}
 
+	/**
+	 *	checkOut 
+	 *	Performs a check out operation, checking out a library copy to a
+	 *	patron.
+	 *
+	 * @param patronID
+	 * @param copyID
+	 * @return
+	 */
 	public static boolean checkOut(String patronID, String copyID){
 		Patron p = getPatron(patronID);
 		Copy c = getCopy(copyID);
@@ -45,7 +71,15 @@ public class TRLLibrary {
 		}
 		else return false;
 	}
-	
+
+	/**
+	 * 	hasHold
+	 *  Checks whether or not a patron has a hold on their account.
+	 *  
+	 * @param 	patronID
+	 * @return 				true if Patron has a hold
+	 * 						false if Patron does not have a hold
+	 */
 	public static boolean hasHold(String patronID){
 		return !(getPatron(patronID).numHolds() == 0);
 	}

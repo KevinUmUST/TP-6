@@ -76,6 +76,16 @@ public class Patron
 		}
 		else return false;
 	}
+	
+	public boolean addHold(Hold h){
+		holds.add(h);
+		return true;
+	}
+	
+	public boolean removeHold(Hold h){
+		holds.remove(h);
+		return true;
+	}
 
 	@Override
 	public boolean equals(Object o)
@@ -86,7 +96,7 @@ public class Patron
 	public String toString()
 	{
 		return "Patron ID: " + this.patronID + "\nName: " + this.name + 
-				   "\nBooks Borrowing: " + copiesOut.toString() + "\n";
+				   "\nBooks Borrowing: " + copiesOut.toString() + "\nHolds: " + holds.toString() + "\n";
 	}
 
 	public static void main(String[] args)

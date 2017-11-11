@@ -40,7 +40,7 @@ public class TRLSystem {
 		}
 	
 		// Perform Check Out Operation 
-		System.out.println("Checking out " + copyID + " to " + patronID + "...\n");
+		System.out.println("\nChecking out " + copyID + " to " + patronID + "...\n");
 		if(TRLLibrary.checkOut(patronID, copyID)){
 			System.out.println("Operation Complete.\n");
 			return TRLReturnType.SUCCESS;

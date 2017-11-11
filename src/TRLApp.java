@@ -88,6 +88,7 @@ public class TRLApp {
 					break;
 				case CHECK_OUT:
 					gui.clearScreen();
+					System.out.println("Check Out\n\n");
 					session.checkOutCopy(session.getPatronID(), requestCopyID());
 					gui.pauseContinue();
 					gui.clearScreen();
