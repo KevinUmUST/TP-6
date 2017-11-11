@@ -23,6 +23,7 @@ public class CopyTest {
 	@Test
 	public void constructor_test() {
 		// CUT instantiated in setUp()
+		assert(CUT != null);
 		assertEquals(CUT.getCopyID(), copyID);
 		assertEquals(CUT.getTitle(), copyTitle);
 	}
@@ -72,6 +73,9 @@ public class CopyTest {
 		// Different Copy ID Different Copy Title
 		copyCopy = new Copy("Different Copy ID", "Different Title");
 		assert(!CUT.equals(copyCopy));
+		
+		// Not an instance of Copy
+		assert(!CUT.equals(p));
 	}
 
 }

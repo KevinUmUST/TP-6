@@ -96,7 +96,8 @@ public class Patron
 	public String toString()
 	{
 		return "Patron ID: " + this.patronID + "\nName: " + this.name + 
-				   "\nBooks Borrowing: " + copiesOut.toString() + "\nHolds: " + holds.toString() + "\n";
+				   "\nBooks Borrowing: " + copiesOut.toString() + 
+				   "\nHolds: " + holds.toString() + "\n";
 	}
 
 }

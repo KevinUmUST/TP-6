@@ -21,7 +21,14 @@ public class HoldTest {
 	@Test
 	public void constructor_test() {
 		// CUT instantiated in setUp()
+		assert(CUT != null);
 		assert(CUT.getCopy().equals(c));
+	}
+	
+	@Test
+	public void equals_test(){
+		// Not an instance of Hold
+		assert(!CUT.equals(c));
 	}
 
 }
