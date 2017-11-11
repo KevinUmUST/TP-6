@@ -17,6 +17,7 @@ public class TRLApp {
 		init();
 		while(true){
 			boolean notdone = true;
+			System.out.println("Starting New TRL Session...\n");
 			while(notdone){
 				try {
 					System.out.println("Please enter the Patron's ID.");
@@ -28,7 +29,12 @@ public class TRLApp {
 				}
 			}
 			gui.clearScreen();
+			System.out.println("Patron Account Information \n\n");
+			System.out.println(session.getPatronInfo());
+			gui.pauseContinue();
+			gui.clearScreen();
 			runMainMenu();
+			gui.clearScreen();
 		}
 	}
 
@@ -69,7 +75,15 @@ public class TRLApp {
 		return id;
 	}
 	
-	private static String menuDisplayGetResponse() throws IOException{
+	private static void displayPatronIDandWarnings(){
+		System.out.println("PatronID: " + session.getPatronID());
+		if(session.getCanCheckOut()){
+			System.out.println("WARNING! Customer has holds on their account!\n");
+		}
+	}
+	
+	private static String displayMenuGetResponse() throws IOException{
+		displayPatronIDandWarnings();
 		gui.displayMainMenu();
 		return gui.getUserInput();
 	}
@@ -91,7 +105,7 @@ public class TRLApp {
 		int cmdInt = 1;
 		
 		while(cmdInt != QUIT){
-			if(validateMainMenuCmd(cmdStr = menuDisplayGetResponse())){
+			if(validateMainMenuCmd(cmdStr = displayMenuGetResponse())){
 				cmdInt = Integer.parseInt(cmdStr);
 			}
 			else return;
@@ -103,7 +117,16 @@ public class TRLApp {
 				case CHECK_OUT:
 					gui.clearScreen();
 					System.out.println("Check Out\n\n");
-					session.checkOutCopy(session.getPatronID(), requestCopyID());
+					if(!session.getCanCheckOut()){
+						System.out.println("Customer has holds! Cannot perform check out.\n");
+					}
+					else{
+						while(session.checkOutCopy(session.getPatronID(), requestCopyID()) != TRLReturnType.SUCCESS){
+							gui.clearScreen();
+							System.out.println("Check Out\n\n");
+							System.out.println("Invalid Copy ID. Please try again.\n");
+						}
+					}
 					gui.pauseContinue();
 					gui.clearScreen();
 					break;

@@ -91,7 +91,7 @@ public class TRLSystem {
 	 *  					check out operation
 	 */
 	public boolean canCheckOut(String patronID){
-		return TRLLibrary.hasHold(patronID);
+		return !TRLLibrary.hasHold(patronID);
 	}
 	
 	/**

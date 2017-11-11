@@ -116,4 +116,13 @@ public class TRLSession {
 	public String getCopyInfo(String copyID){
 		return TRLSystem.getCopyInfo(copyID);
 	}
+	
+	/**
+	 * 	getCanCheckOut
+	 *  Returns whether the session patron can check out copies.
+	 *  
+	 */
+	public boolean getCanCheckOut(){
+		return canCheckOut;
+	}
 }

@@ -24,8 +24,12 @@ public class TRLLibrary {
 		copyStore = new HashMap<String, Copy>();
 
 		patronStore.put("P1", new Patron("P1", "Eric"));
+		patronStore.put("P2", new Patron("P2", "Latey McLateFace"));
+		
 		copyStore.put("C1", new Copy("C1", "Fun with Objects"));
 		copyStore.put("C2", new Copy("C2", "More Fun with Objects"));
+		
+		getPatron("P2").addHold(new Hold(getCopy("C1")));
 	}
 
 	/**
@@ -81,7 +85,7 @@ public class TRLLibrary {
 	 * 						false if Patron does not have a hold
 	 */
 	public static boolean hasHold(String patronID){
-		return !(getPatron(patronID).numHolds() == 0);
+		return (getPatron(patronID).numHolds() != 0);
 	}
 	
 
