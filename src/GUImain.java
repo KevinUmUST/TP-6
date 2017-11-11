@@ -1,15 +1,32 @@
-import java.util.ArrayList;
-import java.util.Arrays;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 
 public class GUImain {
 
-	GUImenu mainMenu;
+	private Integer SCREEN_HEIGHT = 80; 
+	private Integer SCREEN_WIDTH = 80; 
+	private GUImenu mainMenu;
 	
-	public GUImain(TRLSession TRLSession){
+	private BufferedReader br;
+	
+	public GUImain(){
 		mainMenu = new GUImenu();
-		
-		System.out.println("");
-		System.out.println("1. Check Out");
+		br = new BufferedReader(new InputStreamReader(System.in));
 	}
 	
+	public void clearScreen(){
+		for(int i = 0; i < SCREEN_HEIGHT; i++){
+			System.out.println("\n");
+		}
+	}	
+	
+	public void displayMainMenu(){
+		mainMenu.display();
+	}
+	
+	public String getUserInput() throws IOException{
+		System.out.print("> ");
+		return br.readLine();
+	}
 }

@@ -29,8 +29,23 @@ public class TRLSystem {
 	 * 
 	 * 	@return				true if successful, false if failed to check out
 	 */
-	public boolean checkOut(String patronID, String copyID){
-		return TRLLibrary.checkOut(patronID, copyID);
+	public TRLReturnType checkOut(String patronID, String copyID){
+		
+		// Validate inputs
+		if(TRLLibrary.getPatron(patronID) == null){
+			return TRLReturnType.PATRON_NOT_FOUND;
+		}
+		else if(TRLLibrary.getCopy(copyID) == null){
+			return TRLReturnType.COPY_NOT_FOUND;
+		}
+	
+		// Perform Check Out Operation 
+		System.out.println("Checking out " + copyID + " to " + patronID + "...");
+		if(TRLLibrary.checkOut(patronID, copyID)){
+			System.out.println("Operation Complete.\n");
+			return TRLReturnType.SUCCESS;
+		}
+		else return TRLReturnType.UNKNOWN_ERROR;
 	}
 
 	/**
