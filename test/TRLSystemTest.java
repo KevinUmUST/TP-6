@@ -3,7 +3,7 @@ import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 
-public class TRLSystemTest {
+public class TRLSystemTest { 
 
 	private Patron patron;
 	private TRLSystem trlSystem;
