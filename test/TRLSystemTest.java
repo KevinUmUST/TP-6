@@ -28,6 +28,22 @@ public class TRLSystemTest {
 		
 		assertEquals(TRLReturnType.PATRON_NOT_FOUND,result);
 	}
+	
+	@Test
+	public void validatingCopyIdExists() throws Exception {
+		
+		TRLReturnType result=trlSystem.checkCopyID("C1"); //C1 exist in TRLLibrary
+		
+		assertEquals(TRLReturnType.SUCCESS,result);
+	}
+	
+	@Test
+	public void validatingCopyIdNotExist() throws Exception {
+		
+		TRLReturnType result=trlSystem.checkCopyID("C100"); //C100 does not exist in TRLLibrary
+		
+		assertEquals(TRLReturnType.COPY_NOT_FOUND,result);
+	}
 
 	
 }
