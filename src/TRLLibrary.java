@@ -25,6 +25,10 @@ public class TRLLibrary {
 
 		patronStore.put("P1", new Patron("P1", "Eric"));
 		patronStore.put("P2", new Patron("P2", "Latey McLateFace"));
+		patronStore.put("P3", new Patron("P3", "John"));
+		patronStore.put("P4", new Patron("P4", "Sarah"));
+		patronStore.put("P5", new Patron("P5", "Alice"));
+
 		
 		copyStore.put("C1", new Copy("C1", "Fun with Objects"));
 		copyStore.put("C2", new Copy("C2", "More Fun with Objects"));
