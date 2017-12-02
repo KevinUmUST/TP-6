@@ -5,13 +5,21 @@ import org.junit.Test;
 
 public class TRLLibraryTest {
 
+	// Class Under Test is TRLLibrary (static)
+	
 	@Before
 	public void setUp() throws Exception {
 	}
 
 	@Test
-	public void test() {
-		fail("Not yet implemented");
+	public void getset_test() {
+		assertEquals(TRLLibrary.getPatron("P1").getPatronID(), "P1");
+		assertEquals(TRLLibrary.getCopy("C1").getCopyID(), "C1");
+	}
+	
+	@Test
+	public void checkout_test(){
+		//assertTrue(TRLLibrary.checkOut("P3", "C1"));
 	}
 
 }
