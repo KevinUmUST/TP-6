@@ -32,6 +32,15 @@ public class TRLLibrary {
 		
 		copyStore.put("C1", new Copy("C1", "Fun with Objects"));
 		copyStore.put("C2", new Copy("C2", "More Fun with Objects"));
+		copyStore.put("C3", new Copy("C3", "Clean Code"));
+		copyStore.put("C4", new Copy("C4", "The Mythical Man-Month"));
+		copyStore.put("C5", new Copy("C5", "Design Patterns"));
+		copyStore.put("C6", new Copy("C6", "Software Engineering"));
+		copyStore.put("C7", new Copy("C7", "Agile Principles"));
+		copyStore.put("C8", new Copy("C8", "Repaid Development"));
+		copyStore.put("C9", new Copy("C9", "Beautiful Code"));
+		copyStore.put("C10", new Copy("C10", "Pro Git"));
+
 		
 		getPatron("P2").addHold(new Hold(getCopy("C1")));
 	}
