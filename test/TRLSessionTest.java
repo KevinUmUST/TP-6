@@ -4,39 +4,49 @@ import org.junit.Test;
 
 public class TRLSessionTest {
 
+	TRLSession CUT;		// Class Under Test
+	String PatronID = "P1";
+	String CopyID	= "C1";
+	String BadPatronID = "XP1";
+	String BadCopyID   = "XC1";
+	
+	public TRLSessionTest() throws Exception{
+		CUT = new TRLSession("PatronID");
+	}
+	
 	@Test
 	public void testValidatePatron() {
-	    assertTrue("should be same", true);
+	    assertTrue(CUT.validatePatron(PatronID));
+	    assertTrue(!CUT.validatePatron(BadPatronID));
 	}
 
 	@Test
 	public void testValidateCopy() {
-	    assertTrue("should be same", true);
-
+	    assertTrue(CUT.validateCopy(CopyID));
+	    assertTrue(!CUT.validateCopy(BadCopyID));
 	}
 
 	@Test
 	public void testCheckOutCopy() {
-	    assertTrue("should be same", true);
-
+	    assertEquals(CUT.checkOutCopy(PatronID, CopyID), TRLReturnType.SUCCESS);
+	    assertEquals(CUT.checkOutCopy(PatronID, BadCopyID), TRLReturnType.COPY_NOT_FOUND);
+	    assertEquals(CUT.checkOutCopy(BadPatronID, CopyID), TRLReturnType.PATRON_NOT_FOUND);
 	}
 
 	@Test
 	public void testWorkerLogin() {
-	    assertTrue("should be same", true);
-
+	    assertEquals(CUT.workerLogin(), TRLReturnType.SUCCESS);
 	}
 
 	@Test
 	public void testGetPatronID() {
-	    assertTrue("should be same", true);
-
+	    assertEquals(CUT.getPatronID(), PatronID);
+	    assertEquals(CUT.getPatronID(), BadPatronID);
 	}
 
 	@Test
 	public void testGetPatronInfoString() {
-	    assertTrue("should be same", true);
-
+		//System.out.println(CUT.getPatronInfo());
 	}
 
 	@Test
