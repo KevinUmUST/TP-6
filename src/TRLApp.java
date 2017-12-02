@@ -5,10 +5,10 @@ import java.util.concurrent.TimeUnit;
 public class TRLApp {
 
 	// Refactor this to use the GUI definitions of menu IDs.....
-	static final int QUIT = 3;
-	static final int CHECK_OUT = 1;
-	static final int PATRON_INFO = 2;
-	
+	static final int CHECK_IN = 1;
+	static final int CHECK_OUT = 2;
+	static final int PATRON_INFO = 3;
+	static final int QUIT = 4;
 	private static GUImain gui;
 	private static TRLSession session;
 	
@@ -111,6 +111,12 @@ public class TRLApp {
 			else return;
 			
 			switch(cmdInt){
+				case CHECK_IN:
+					gui.clearScreen();
+					System.out.println("Check In\n\n");
+					gui.pauseContinue();
+					gui.clearScreen();
+
 				case QUIT:
 					gui.clearScreen();
 					break;
