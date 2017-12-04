@@ -125,4 +125,8 @@ public class TRLSession {
 	public boolean getCanCheckOut(){
 		return canCheckOut;
 	}
+	
+	public TRLReturnType checkInCopy(String patronID, String copyID){
+		return TRLSystem.checkIn(patronID, copyID);
+	}
 }

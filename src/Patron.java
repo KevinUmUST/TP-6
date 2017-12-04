@@ -59,7 +59,7 @@ public class Patron
 	{
 		if (!c.checkedOut())
 		{
-			c.setOutTo(this);
+			//c.setOutTo(this);  I don't think this code is necessary because the same code is in TRLLibrary's checkOut method. And the app seems to run fine.
 			copiesOut.add(c);
 			return true;
 		}
@@ -70,7 +70,7 @@ public class Patron
 	{
 		if(c.getOutTo().equals(this))
 		{
-			c.setOutTo(null);
+			//c.setOutTo(null);   same reason, I don't think this code is necessary because the same code is in TRLLibrary's checkIn method. And the app seems to run fine.
 			copiesOut.remove(c);
 			return true;
 		}

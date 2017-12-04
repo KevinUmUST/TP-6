@@ -114,8 +114,16 @@ public class TRLApp {
 				case CHECK_IN:
 					gui.clearScreen();
 					System.out.println("Check In\n\n");
+							
+					while(session.checkInCopy(session.getPatronID(), requestCopyID()) != TRLReturnType.SUCCESS){
+						gui.clearScreen();
+						System.out.println("Check In\n\n");
+						System.out.println("Invalid Copy ID. Please try again.\n");
+					}
+					
 					gui.pauseContinue();
 					gui.clearScreen();
+					break;
 
 				case QUIT:
 					gui.clearScreen();

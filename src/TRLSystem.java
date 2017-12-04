@@ -115,4 +115,24 @@ public class TRLSystem {
 	public String getPatronInfo(String patronID){
 		return TRLLibrary.getPatron(patronID).toString();
 	}
+	
+	public TRLReturnType checkIn(String patronID, String copyID){
+
+		// Validate Inputs
+		TRLReturnType returnValue;
+		if( ((returnValue = checkPatronID(patronID)) != TRLReturnType.SUCCESS) ||
+			((returnValue = checkCopyID(copyID)) != TRLReturnType.SUCCESS) ){
+			return returnValue; 
+		}
+	
+		// Perform Check Out Operation
+		System.out.println("\nChecking in " + copyID + " from " + patronID + "...\n");
+		if(TRLLibrary.checkIn(patronID, copyID)){
+			System.out.println("Operation Complete.\n");
+			return TRLReturnType.SUCCESS;
+		}
+		else return TRLReturnType.UNKNOWN_ERROR;
+	}
+	
+	
 }

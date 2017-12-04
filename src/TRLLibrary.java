@@ -88,6 +88,18 @@ public class TRLLibrary {
 		}
 		else return false;
 	}
+	
+	public static boolean checkIn(String patronID, String copyID) {
+		Patron p = getPatron(patronID);
+		Copy c = getCopy(copyID);
+		
+		if(p.checkCopyIn(c)) {
+			c.setOutTo(null);
+			return true;
+		}
+		else return false;
+		
+	}
 
 	/**
 	 * 	hasHold
