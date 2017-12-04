@@ -125,7 +125,7 @@ public class TRLSystem {
 			return returnValue; 
 		}
 	
-		// Perform Check Out Operation
+		// Perform Check In Operation
 		System.out.println("\nChecking in " + copyID + " from " + patronID + "...\n");
 		if(TRLLibrary.checkIn(patronID, copyID)){
 			System.out.println("Operation Complete.\n");

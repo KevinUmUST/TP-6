@@ -68,12 +68,19 @@ public class Patron
 
 	public boolean checkCopyIn(Copy c)
 	{
-		if(c.getOutTo().equals(this))
+
+		if(c.getOutTo()==null)
+		{
+			return false;
+		}
+		
+		else if(c.getOutTo().equals(this))
 		{
 			//c.setOutTo(null);   same reason, I don't think this code is necessary because the same code is in TRLLibrary's checkIn method. And the app seems to run fine.
 			copiesOut.remove(c);
 			return true;
 		}
+
 		else return false;
 	}
 	

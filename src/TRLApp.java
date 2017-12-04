@@ -118,7 +118,7 @@ public class TRLApp {
 					while(session.checkInCopy(session.getPatronID(), requestCopyID()) != TRLReturnType.SUCCESS){
 						gui.clearScreen();
 						System.out.println("Check In\n\n");
-						System.out.println("Invalid Copy ID. Please try again.\n");
+						System.out.println("Invalid Copy ID.\nOr partron did not check out any copy.\nPlease try again.\n");
 					}
 					
 					gui.pauseContinue();
