@@ -119,6 +119,8 @@ public class TRLApp {
 						gui.clearScreen();
 						System.out.println("Check In\n\n");
 						System.out.println("Invalid Copy ID.\nOr partron did not check out any copy.\nPlease try again.\n");
+						break;
+						
 					}
 					
 					gui.pauseContinue();
