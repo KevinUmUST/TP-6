@@ -20,6 +20,7 @@ public class TRLLibraryTest {
 	@Test
 	public void checkout_test(){
 		assertTrue(TRLLibrary.checkOut("P3", "C1"));
+		TRLLibrary.checkIn("P3", "C1");
 	}
 
 }
