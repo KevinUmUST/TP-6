@@ -51,6 +51,11 @@ public class Patron
 		this.copiesOut = copiesOut;
 	}
 	
+	public Integer numCheckedOutCopies() {
+		return copiesOut.size();
+	}
+		
+	
 	public Integer numHolds(){
 		return holds.size();
 	}

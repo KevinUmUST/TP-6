@@ -94,6 +94,10 @@ public class TRLSystem {
 		return !TRLLibrary.hasHold(patronID);
 	}
 	
+	public boolean canCheckIn(String patronID) {
+		return TRLLibrary.hasCopy(patronID);
+	}
+	
 	/**
 	 *	getCopyInfo
 	 *	Returns a description of the given library Copy.
@@ -115,6 +119,8 @@ public class TRLSystem {
 	public String getPatronInfo(String patronID){
 		return TRLLibrary.getPatron(patronID).toString();
 	}
+	
+	
 	
 	public TRLReturnType checkIn(String patronID, String copyID){
 
