@@ -9,6 +9,8 @@ public class TRLApp {
 	static final int CHECK_OUT = 2;
 	static final int PATRON_INFO = 3;
 	static final int QUIT = 4;
+	static final int NUM_MENU_ITEMS = 4; // Refactor this out to top or GUI
+	
 	private static GUImain gui;
 	private static TRLSession session;
 	
@@ -89,7 +91,6 @@ public class TRLApp {
 	}
 
 	private static boolean validateMainMenuCmd(String s){
-		int NUM_MENU_ITEMS = 2; // Refactor this out to top or GUI
 		try
 		{
 			int cmd = Integer.parseInt(s);
@@ -122,7 +123,6 @@ public class TRLApp {
 						break;
 						
 					}
-					
 					gui.pauseContinue();
 					gui.clearScreen();
 					break;
@@ -152,6 +152,7 @@ public class TRLApp {
 					System.out.println(session.getPatronInfo());
 					gui.pauseContinue();
 					gui.clearScreen();
+					break;
 			}
 		}
 	}
