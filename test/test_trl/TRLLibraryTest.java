@@ -1,11 +1,22 @@
-package ttrl;
-import static org.junit.Assert.*;
+package test_trl;
 
+import static org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
-
 import trl.TRLLibrary;
 
+/**
+ * TRLLibraryTest
+ * 
+ * TRLLibrary Class Test
+ * 
+ * @author Kevin Um
+ * @author Justin Siu-Ting Hui
+ * @author Sheng Lor
+ * 
+ * @date December 16, 2017
+ *
+ */
 public class TRLLibraryTest {
 
 	// Class Under Test is TRLLibrary (static)

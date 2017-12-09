@@ -1,4 +1,5 @@
 package app;
+
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
@@ -6,14 +7,26 @@ import gui.GUImain;
 import trl.TRLReturnType;
 import trl.TRLSession;
 
-
 /**
  * TRLApp
  * 
  * Textbook Rental Library Application
  * 
+ * SEIS 635 Group Project
+ * Professor: Eric Level
  * 
- * @author 
+ * This application implements a textbook rental library that keeps track of 
+ * transactions between the library and its patrons. The application provides
+ * logic to support a library attendant managing library assets and 
+ * transactions with customers.
+ * 
+ * For more information see the project specifications in the /doc.
+ * 
+ * @author Kevin Um
+ * @author Justin Siu-Ting Hui
+ * @author Sheng Lor
+ * 
+ * @date December 16, 2017
  *
  */
 public class TRLApp {

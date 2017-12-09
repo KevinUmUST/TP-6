@@ -1,4 +1,4 @@
-package ttrl;
+package test_trl;
 import static org.junit.Assert.*;
 
 import org.junit.Before;

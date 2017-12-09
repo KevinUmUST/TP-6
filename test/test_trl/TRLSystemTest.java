@@ -1,4 +1,4 @@
-package ttrl;
+package test_trl;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -8,6 +8,18 @@ import trl.Patron;
 import trl.TRLReturnType;
 import trl.TRLSystem;
 
+/**
+ * TRLSystemTest
+ * 
+ * TRLSystem Class Test
+ * 
+ * @author Kevin Um
+ * @author Justin Siu-Ting Hui
+ * @author Sheng Lor
+ * 
+ * @date December 16, 2017
+ *
+ */
 public class TRLSystemTest { 
 
 	private Patron patron;

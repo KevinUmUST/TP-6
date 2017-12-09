@@ -1,13 +1,16 @@
 package trl;
 
 /**
+ * Patron
  * 
- * Starting class for TP-1
+ * Patron class representing an individual customer and their transactions and
+ * relationship with the library and library assets.
  * 
- * Feel free to add, modify, or delete any of the following code: it's just a
- * possible starting implementation
- *
- * @author eric
+ * @author Kevin Um
+ * @author Justin Siu-Ting Hui
+ * @author Sheng Lor
+ * 
+ * @date December 16, 2017
  *
  */
 

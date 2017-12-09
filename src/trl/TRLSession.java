@@ -5,7 +5,11 @@ package trl;
  *  Manages sessions (transactions) between the TRL operator and the given 
  *  patron.
  *  
- *  @author 
+ * @author Kevin Um
+ * @author Justin Siu-Ting Hui
+ * @author Sheng Lor
+ * 
+ * @date December 16, 2017
  *
  */
 public class TRLSession {

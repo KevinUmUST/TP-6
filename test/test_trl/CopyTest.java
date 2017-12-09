@@ -1,4 +1,4 @@
-package ttrl;
+package test_trl;
 import static org.junit.Assert.*;
 
 import org.junit.Before;
@@ -7,6 +7,18 @@ import org.junit.Test;
 import trl.Copy;
 import trl.Patron;
 
+/**
+ * CopyTest
+ * 
+ * Copy Class Test
+ * 
+ * @author Kevin Um
+ * @author Justin Siu-Ting Hui
+ * @author Sheng Lor
+ * 
+ * @date December 16, 2017
+ *
+ */
 public class CopyTest {
 
 	// Class Under Test

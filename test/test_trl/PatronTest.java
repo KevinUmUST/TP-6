@@ -1,4 +1,4 @@
-package ttrl;
+package test_trl;
 /**
  *  PatronTest (TP_1)
  *  SEIS 635 - Software Analysis and Design
@@ -21,6 +21,18 @@ import trl.Hold;
 import trl.Patron;
 import trl.TRLLibrary;
 
+/**
+ * PatronTest
+ * 
+ * Patron Class Test
+ * 
+ * @author Kevin Um
+ * @author Justin Siu-Ting Hui
+ * @author Sheng Lor
+ * 
+ * @date December 16, 2017
+ *
+ */
 public class PatronTest
 {
 	// Class Under Test

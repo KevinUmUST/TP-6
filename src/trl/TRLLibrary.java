@@ -5,8 +5,12 @@ package trl;
  *  Contains the directory of textbooks, copies, and patrons associated
  *  with the library.
  *  
- *  @author
- *  
+ * @author Kevin Um
+ * @author Justin Siu-Ting Hui
+ * @author Sheng Lor
+ * 
+ * @date December 16, 2017
+ *
  */
 import java.util.HashMap;
 import java.util.Map;

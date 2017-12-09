@@ -11,10 +11,27 @@ package trl;
  */
 import java.lang.String;
 
+/**
+ * TRLSystem 
+ * 
+ * TRL System level operations that are accessible to the application.
+ * 
+ * @author Kevin Um
+ * @author Justin Siu-Ting Hui
+ * @author Sheng Lor
+ * 
+ * @date December 16, 2017
+ *
+ */
 public class TRLSystem {
 
 	
 	/*  Constructors */
+	/**
+	 *  TRLSystem
+	 * 
+	 * 	constructor
+	 */
 	public TRLSystem(){
 		
 	}
@@ -95,6 +112,16 @@ public class TRLSystem {
 		return !TRLLibrary.hasHold(patronID);
 	}
 	
+	/**
+	 * canCheckIn
+	 * Checks whether or not a patron can perform a check in operation. This
+	 * is determined by whether or not the patron currently has anything checked
+	 * out. 
+	 * 
+	 * @param patronID	patron that is checked 
+	 * @return			true if the patron can check in something, false if
+	 * 					patron has no copies checked out
+	 */
 	public boolean canCheckIn(String patronID) {
 		return TRLLibrary.hasCopy(patronID);
 	}
@@ -121,8 +148,15 @@ public class TRLSystem {
 		return TRLLibrary.getPatron(patronID).toString();
 	}
 	
-	
-	
+	/**
+	 * checkIn
+	 * 
+	 * Check in a copy that the patron currently has checked out.
+	 * 
+	 * @param patronID	the patron to check a copy in for.
+	 * @param copyID	the copy to check in from the patron.
+	 * @return
+	 */
 	public TRLReturnType checkIn(String patronID, String copyID){
 
 		// Validate Inputs
@@ -140,6 +174,4 @@ public class TRLSystem {
 		}
 		else return TRLReturnType.UNKNOWN_ERROR;
 	}
-	
-	
 }

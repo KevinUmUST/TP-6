@@ -4,7 +4,12 @@ package trl;
  * 
  * 	Describes a copy of a library item.
  * 
- *	@author
+ * @author Kevin Um
+ * @author Justin Siu-Ting Hui
+ * @author Sheng Lor
+ * 
+ * @date December 16, 2017
+ *
  */
 public class Copy
 {
