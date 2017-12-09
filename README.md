@@ -1,7 +1,7 @@
 # Textbook Rental Library Application
 
 ## Overview
-This application implements a textbook rental library that keeps track of transactions between the library and its patrons. The application provides logic to support a library attendant managing library assets and * transactions with customers. For more information see the project specifications in the /doc.
+This application implements a textbook rental library that keeps track of transactions between the library and its patrons. The application provides logic to support a library attendant managing library assets and transactions with customers. For more information see the project specifications in the /doc.
 
 ## How to Install
 This application has not been packaged and must be run through Eclipse.
