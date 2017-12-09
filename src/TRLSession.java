@@ -133,7 +133,8 @@ public class TRLSession {
 	}
 	
 	public boolean getCanCheckIn(){
-		return canCheckIn;
+		return TRLSystem.canCheckIn(sessionPatronID);
+
 	}
 	
 

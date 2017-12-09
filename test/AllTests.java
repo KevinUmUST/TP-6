@@ -4,7 +4,7 @@ import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
 @SuiteClasses({ CopyTest.class, HoldTest.class, PatronTest.class, TRLLibraryTest.class, TRLSessionTest.class,
-		TRLSystemTest.class })
+		TRLSystemTest.class, GUImenuTest.class, GUImainTest.class })
 	public class AllTests {
 
 }

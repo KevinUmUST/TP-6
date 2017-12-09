@@ -30,5 +30,10 @@ public class HoldTest {
 		// Not an instance of Hold
 		assert(!CUT.equals(c));
 	}
+	
+	@Test
+	public void toString_test(){
+		assertEquals(CUT.toString(), "HOLD\nLate Copy: " + copyTitle + "\nDays Overdue: 0\n");
+	}
 
 }
