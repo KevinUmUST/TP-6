@@ -10,8 +10,20 @@ public class TRLSessionTest {
 	String BadPatronID = "XP1";
 	String BadCopyID   = "XC1";
 	
-	public TRLSessionTest() throws Exception{
-		CUT = new TRLSession("PatronID");
+	public TRLSessionTest() {
+		try {
+			CUT = new TRLSession(PatronID);
+		}
+		catch (Exception e) {
+			fail();
+		}
+		try {
+			CUT = new TRLSession(BadPatronID);
+			fail();
+		}
+		catch (Exception e){
+			assert(true);
+		}
 	}
 	
 	@Test
@@ -29,6 +41,7 @@ public class TRLSessionTest {
 	@Test
 	public void testCheckOutCopy() {
 	    assertEquals(CUT.checkOutCopy(PatronID, CopyID), TRLReturnType.SUCCESS);
+	    CUT.checkInCopy(PatronID, CopyID);
 	    assertEquals(CUT.checkOutCopy(PatronID, BadCopyID), TRLReturnType.COPY_NOT_FOUND);
 	    assertEquals(CUT.checkOutCopy(BadPatronID, CopyID), TRLReturnType.PATRON_NOT_FOUND);
 	}
@@ -41,30 +54,23 @@ public class TRLSessionTest {
 	@Test
 	public void testGetPatronID() {
 	    assertEquals(CUT.getPatronID(), PatronID);
-	    assertEquals(CUT.getPatronID(), BadPatronID);
-	}
-
-	@Test
-	public void testGetPatronInfoString() {
-		//System.out.println(CUT.getPatronInfo());
+	    assertNotEquals(CUT.getPatronID(), BadPatronID);
 	}
 
 	@Test
 	public void testGetPatronInfo() {
-	    assertTrue("should be same", true);
-
+		assertEquals(CUT.getPatronInfo(), "Patron ID: P1\nName: Eric\nBooks Borrowing: []\nHolds: []\n");
+		assertEquals(CUT.getPatronInfo(PatronID), "Patron ID: P1\nName: Eric\nBooks Borrowing: []\nHolds: []\n");
 	}
 
 	@Test
 	public void testGetCopyInfo() {
-	    assertTrue("should be same", true);
-
+		assertEquals(CUT.getCopyInfo("C1"), "Copy ID: C1\nTitle: Fun with Objects\nChecked Out To: (Not Checked Out)\n");
 	}
 
 	@Test
 	public void testGetCanCheckOut() {
-	    assertTrue("should be same", true);
+	    assertTrue(CUT.getCanCheckOut());
 
 	}
-
 }
