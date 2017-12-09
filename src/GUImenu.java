@@ -17,7 +17,7 @@ public class GUImenu {
 		for (GUImenuItem menuItem : menuItems){
 			System.out.println(menuItem.getID() + ". " + menuItem.getName());
 		}
-		printSeperator();
+		printSeparator();
 	}
 	
 	public void addMenuItem(GUImenuItem menuItem){
@@ -28,7 +28,7 @@ public class GUImenu {
 		menuItems.remove(menuItem);
 	}
 	
-	public void printSeperator(){
+	public void printSeparator(){
 		for(int i=0;i<SEPARATOR_LENGTH;i++){
 			System.out.print("*");
 		}
@@ -36,12 +36,12 @@ public class GUImenu {
 	}
 	
 	public void printHeader(String s){
-		printSeperator();
+		printSeparator();
 		for(int i=0;i<SEPARATOR_LENGTH/3+1;i++){
 			System.out.print(" ");
 		}
 		System.out.print(s + "\n");
-		printSeperator();
+		printSeparator();
 		System.out.println("Please enter your selection.\n");
 	}
 	
