@@ -13,6 +13,7 @@ public class TRLSession {
 	private String sessionPatronID;
 	
 	private boolean canCheckOut;
+	private boolean canCheckIn;
 	private boolean workerValidated = false; 
 
 	/**
@@ -26,6 +27,7 @@ public class TRLSession {
 		if(validatePatron(patronID)){
 			sessionPatronID = patronID;
 			canCheckOut = TRLSystem.canCheckOut(patronID);
+			canCheckIn = TRLSystem.canCheckIn(patronID);
 		}
 		else throw new Exception();
 	}
@@ -62,6 +64,10 @@ public class TRLSession {
 	 */
 	public TRLReturnType checkOutCopy(String patronID, String copyID){
 		return TRLSystem.checkOut(patronID, copyID);
+	}
+	
+	public TRLReturnType checkInCopy(String patronID, String copyID) {
+		return TRLSystem.checkIn(patronID, copyID);
 	}
 
 	/**
@@ -126,7 +132,9 @@ public class TRLSession {
 		return canCheckOut;
 	}
 	
-	public TRLReturnType checkInCopy(String patronID, String copyID){
-		return TRLSystem.checkIn(patronID, copyID);
+	public boolean getCanCheckIn(){
+		return canCheckIn;
 	}
+	
+
 }

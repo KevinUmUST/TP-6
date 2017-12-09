@@ -113,5 +113,9 @@ public class TRLLibrary {
 		return (getPatron(patronID).numHolds() != 0);
 	}
 	
+	public static boolean hasCopy(String patronID) {
+		return (getPatron(patronID).numCheckedOutCopies()!=0);
+	}
+	
 
 }

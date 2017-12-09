@@ -115,13 +115,15 @@ public class TRLApp {
 				case CHECK_IN:
 					gui.clearScreen();
 					System.out.println("Check In\n\n");
-							
-					while(session.checkInCopy(session.getPatronID(), requestCopyID()) != TRLReturnType.SUCCESS){
+					if(!session.getCanCheckIn()) {
+						System.out.println("Customer has no checked out copies! Cannot perform check in.\n");
+					}
+					else {
+						while(session.checkInCopy(session.getPatronID(), requestCopyID()) != TRLReturnType.SUCCESS){
 						gui.clearScreen();
 						System.out.println("Check In\n\n");
-						System.out.println("Invalid Copy ID.\nOr partron did not check out any copy.\nPlease try again.\n");
-						break;
-						
+						System.out.println("Invalid Copy ID. Please try again.\n");
+						}
 					}
 					gui.pauseContinue();
 					gui.clearScreen();
