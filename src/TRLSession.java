@@ -11,9 +11,6 @@ public class TRLSession {
 
 	private TRLSystem TRLSystem;
 	private String sessionPatronID;
-	
-	private boolean canCheckOut;
-	private boolean canCheckIn;
 	private boolean workerValidated = false; 
 
 	/**
@@ -26,8 +23,6 @@ public class TRLSession {
 		TRLSystem = new TRLSystem();
 		if(validatePatron(patronID)){
 			sessionPatronID = patronID;
-			canCheckOut = TRLSystem.canCheckOut(patronID);
-			canCheckIn = TRLSystem.canCheckIn(patronID);
 		}
 		else throw new Exception();
 	}
@@ -129,7 +124,8 @@ public class TRLSession {
 	 *  
 	 */
 	public boolean getCanCheckOut(){
-		return canCheckOut;
+		return TRLSystem.canCheckOut(sessionPatronID);
+
 	}
 	
 	public boolean getCanCheckIn(){

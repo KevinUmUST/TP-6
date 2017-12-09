@@ -115,6 +115,8 @@ public class TRLApp {
 				case CHECK_IN:
 					gui.clearScreen();
 					System.out.println("Check In\n\n");
+					
+					
 					if(!session.getCanCheckIn()) {
 						System.out.println("Customer has no checked out copies! Cannot perform check in.\n");
 					}
