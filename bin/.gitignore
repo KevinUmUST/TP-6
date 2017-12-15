@@ -1,10 +1,5 @@
-/.DS_Store
-/test/
-/src/
 /gui/
-/trl/
-/app/
-/tgui/
-/ttrl/
+/test/
 /test_gui/
 /test_trl/
+/trl/
