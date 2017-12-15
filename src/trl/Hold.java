@@ -16,7 +16,7 @@ package trl;
 public class Hold {
 
 	private Copy lateCopy;
-	private int daysOverdue = 0; 		// TODO: Implement this functionality
+	private int daysOverdue = 0;
 	
 	public Hold(Copy c){
 		lateCopy = c;

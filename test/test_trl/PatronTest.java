@@ -37,6 +37,7 @@ public class PatronTest
 {
 	// Class Under Test
 	Patron CUT;
+
 	Patron CUT2;
 	private final String copyID = "TEST_COPY_ID";
 	private final String copyTitle = "TEST_COPY_TITLE";
@@ -45,7 +46,6 @@ public class PatronTest
 	private final String patronID2 = "TEST_PATRON_ID2";
 	private final String patronName2 = "PATRON NAME2";	
 	private Copy c1, c2;
-	
 	
 	@Before
 	public void setUp() {

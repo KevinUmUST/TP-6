@@ -2,6 +2,8 @@ package gui;
 
 import java.util.ArrayList;
 
+import trl.Constants;
+
 /**
  * GUImenu
  * 
@@ -22,11 +24,12 @@ public class GUImenu {
 	 * GUImenu Constructor
 	 */
 	public GUImenu(){
-		menuItems.add(new GUImenuItem(1, "CHECK IN"));
-		menuItems.add(new GUImenuItem(2, "CHECK OUT"));
-		menuItems.add(new GUImenuItem(3, "PATRON ACCOUNT INFO"));
-		menuItems.add(new GUImenuItem(4, "HELP"));
-		menuItems.add(new GUImenuItem(5, "QUIT"));
+		menuItems.add(new GUImenuItem(Constants.CHECK_IN, "CHECK IN"));
+		menuItems.add(new GUImenuItem(Constants.CHECK_OUT, "CHECK OUT"));
+		menuItems.add(new GUImenuItem(Constants.PATRON_INFO,
+				"PATRON ACCOUNT INFO"));
+		menuItems.add(new GUImenuItem(Constants.HELP, "HELP"));
+		menuItems.add(new GUImenuItem(Constants.QUIT, "QUIT"));
 	}
 	
 	/**
