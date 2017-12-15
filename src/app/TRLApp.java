@@ -195,10 +195,8 @@ public class TRLApp {
 		int cmdInt = 1;
 		
 		while(cmdInt != QUIT){
-			if(validateMainMenuCmd(cmdStr = displayMenuGetResponse())){
-				cmdInt = Integer.parseInt(cmdStr);
-			}
-			else return;
+			cmdInt = validateMainMenuCmd(cmdStr = displayMenuGetResponse()) ?
+					Integer.parseInt(cmdStr) : -1;
 			
 			switch(cmdInt){ // TODO: Fix code smell - remove common code from case statements and place after case block
 				case CHECK_IN:
@@ -252,6 +250,11 @@ public class TRLApp {
 					System.out.println("THIS IS THE HELP TEXT\n");
 					gui.pauseContinue();
 					gui.clearScreen();
+					break;
+				default:
+					gui.clearScreen();
+					System.out.println("Invalid menu item, please try again.\n");
+					gui.pauseContinue();
 					break;
 			}
 		}
