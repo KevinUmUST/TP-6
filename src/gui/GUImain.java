@@ -18,7 +18,6 @@ public class GUImain {
 
 	private Integer SCREEN_HEIGHT = 80; 
 	private GUImenu mainMenu;
-	
 	private BufferedReader br;
 	
 	/**
