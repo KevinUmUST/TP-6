@@ -16,7 +16,6 @@ public class TRLSession {
 
 	private TRLSystem TRLSystem;
 	private String sessionPatronID;
-	private boolean workerValidated = false; 
 
 	/**
 	 * 	Constructor
@@ -73,7 +72,6 @@ public class TRLSession {
 	/**
 	 *	workerLogin
 	 *	Validate the Worker using the system.
-	 *  TODO: Implement this.
 	 *  
 	 * @return
 	 */

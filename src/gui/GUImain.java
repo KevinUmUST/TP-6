@@ -17,9 +17,7 @@ import java.io.InputStreamReader;
 public class GUImain {
 
 	private Integer SCREEN_HEIGHT = 80; 
-	private Integer SCREEN_WIDTH = 80; 
 	private GUImenu mainMenu;
-	
 	private BufferedReader br;
 	
 	/**

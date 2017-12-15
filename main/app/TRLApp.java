@@ -1,11 +1,8 @@
 package app;
-
 import java.io.IOException;
 import java.util.concurrent.TimeUnit;
-
 import gui.GUImain;
-import trl.Copy;
-import trl.Patron;
+import trl.Constants;
 import trl.TRLReturnType;
 import trl.TRLSession;
 
@@ -32,15 +29,6 @@ import trl.TRLSession;
  *
  */
 public class TRLApp {
-
-	// Refactor this to use the GUI definitions of menu IDs.....
-	static final int CHECK_IN = 1;
-	static final int CHECK_OUT = 2;
-	static final int PATRON_INFO = 3;
-	static final int HELP = 4;
-	static final int QUIT = 5;
-	static final int NUM_MENU_ITEMS = 5; // Refactor this out to top or GUI
-	
 	private static GUImain gui;
 	private static TRLSession session;
 	
@@ -68,7 +56,7 @@ public class TRLApp {
 					notdone = false;
 				}
 				catch (Exception e){
-					System.out.println("\nInvalid Patron ID. Please try again.\n");
+					System.out.println(Constants.invalidPatronIDMessage);
 				}
 			}
 			gui.clearScreen();
@@ -88,43 +76,9 @@ public class TRLApp {
 	 * 	 
 	 * @throws InterruptedException
 	 */
-	private static void init() throws InterruptedException{ // TODO: CodeSmell: Move Constant String values to a common location
-		System.out.println("***********************************************\n"
-				+ "            TEXTBOOK RENTAL SYSTEM\n"
-				+ "***********************************************\n"
-				+ "\n"
-				+ "  SEIS 635 Group Project\n"
-				+ "  December 2017\n\n"
-				+ "  Written by:\n"
-				+ "  Sheng Lor, Justin Siu-Ting Hui, and Kevin Um\n"
-				+ "\n"
-				+ "\n"
-				+ "  Professor: Eric Level\n"
-				+ "\n\n"
-				+ "***********************************************\n"
-				+ "\n\n"
-				+ "Starting textbook rental system..."
-				+ "\n\n");
+	private static void init() throws InterruptedException{
+		System.out.println(Constants.mainHeader);
 		TimeUnit.SECONDS.sleep(1);	
-		//gui.clearScreen(); // TODO: Get rid of this if not necessary
-	}
-
-	
-	/**
-	 * 	requestPatronID
-	 * 
-	 * @return	Returns the Patron ID supplied by the user if the user provided
-	 *  		a valid ID.
-	 * 
-	 * @throws IOException
-	 */
-	private static String requestPatronID() throws IOException{
-		System.out.println("Please enter the Patron's ID.");
-		String id;
-		while(!session.validatePatron(id = gui.getUserInput())){
-			System.out.println("Invalid Patron ID. Please try again.\n");
-		}
-		return id;
 	}
 	
 	/**
@@ -178,7 +132,7 @@ public class TRLApp {
 		try
 		{
 			int cmd = Integer.parseInt(s);
-			return (cmd <= NUM_MENU_ITEMS);
+			return (cmd <= Constants.NUM_MENU_ITEMS);
 		}
 		catch (NumberFormatException e) {
 			return false;
@@ -196,106 +150,60 @@ public class TRLApp {
 		String cmdStr;
 		int cmdInt = 1;
 		
-		while(cmdInt != QUIT){
+		while(cmdInt != Constants.QUIT){
 			cmdInt = validateMainMenuCmd(cmdStr = displayMenuGetResponse()) ?
 					Integer.parseInt(cmdStr) : -1;
-			
 			switch(cmdInt){ // TODO: Fix code smell - remove common code from case statements and place after case block
-				case CHECK_IN:
+				case Constants.CHECK_IN:
 					gui.clearScreen();
 					System.out.println("Check In\n\n");
-					
 					if(!session.getCanCheckIn()) {
-						System.out.println("Customer has no checked out copies! Cannot perform check in.\n");
+						System.out.println("Customer has no checked out " + 
+										   "copies! Cannot perform check in.\n");
 					}
 					else {
-						while(session.checkInCopy(session.getPatronID(), requestCopyID()) != TRLReturnType.SUCCESS){
+						while(session.checkInCopy(session.getPatronID(), 
+								requestCopyID()) != TRLReturnType.SUCCESS){
 						gui.clearScreen();
 						System.out.println("Check In\n\n");
-						System.out.println("Invalid Copy ID. Please try again.\n");
+						System.out.println(Constants.invalidCopyIDMessage);
 						}
 					}
-					gui.pauseContinue();
-					gui.clearScreen();
 					break;
-
-				case QUIT:
-					gui.clearScreen();
+				case Constants.QUIT:
+					System.out.println("Exiting current session...\n");
 					break;
-					
-				case CHECK_OUT:
+				case Constants.CHECK_OUT:
 					gui.clearScreen();
 					System.out.println("Check Out\n\n");
 					if(!session.getCanCheckOut()){
 						System.out.println("Customer has holds! Cannot perform check out.\n");
 					}
 					else{
-						while(session.checkOutCopy(session.getPatronID(), requestCopyID()) != TRLReturnType.SUCCESS){
+						while(session.checkOutCopy(session.getPatronID(), 
+								requestCopyID()) != TRLReturnType.SUCCESS){
 							gui.clearScreen();
 							System.out.println("Check Out\n\n");
-							System.out.println("Invalid Copy ID. Please try again.\n");
+							System.out.println(Constants.invalidCopyIDMessage);
 						}
 					}
-					gui.pauseContinue();
-					gui.clearScreen();
 					break;
-					
-				case PATRON_INFO:
+				case Constants.PATRON_INFO:
 					gui.clearScreen();
 					System.out.println("Patron Account Information \n\n");
 					System.out.println(session.getPatronInfo());
-					gui.pauseContinue();
-					gui.clearScreen();
 					break;
-				case HELP: 
+				case Constants.HELP: 
 					gui.clearScreen();
-					System.out.println("Help Documentation\n\n" + 
-					"Avaliable Patron: \n" +
-							"ID = P1 (Eric)\n" +
-							"ID = P2 (Laey McLateFace)\n" +
-							"ID = P3 (John)\n" +
-							"ID = P4 (Sarah)\n" +
-							"ID = P5 (Alice)\n\n\n" + 
-					
-					"Avaliable Copies: \n" +
-					"ID = C1 (Fun with Objects)\n" +
-					"ID = C2 (More Fun with Objects)\n" +
-					"ID = C3 (Clean Code)\n" +
-					"ID = C4 (The Mythical Man-Month)\n" +
-					"ID = C5 (Design Patterns)\n" +
-					"ID = C6 (Software Engineering)\n" +
-					"ID = C7 (Agile Principles)\n" +
-					"ID = C8 (Repaid Development)\n" +
-					"ID = C9 (Beautiful Code)\n" +
-					"ID = C10 (Pro Git)\n\n\n" + 
-					
-					" MAIN MENU: Please enter your selection: \n " + 
-					" 1. CHECK IN \n " + 
-					" 2. CHECK OUT \n " +
-					" 3. PATRON ACCOUNT INFO \n " +
-					" 4. QUIT \n \n " +
-					"To check in or return a copy, press 1 \n " +
-					"To check out or borrow a copy, press 2 \n " +
-					"To see your account information (i.e. holds), press 3 \n " +
-					"To quit, press 4 \n\n\n " +
-					
-					"If press 1 ------> Type in the ID number of the copy that you have checked out \n " +
-					"	*System will say SUCCESS when check in is completed \n " +
-					"If press 2 ------> Type in the ID number of an available copy (available copy's info are at the top) \n " +	
-					"	*System will say SUCCESS if check out is completed, or it will say FAIL if there is a hold in your account \n " +
-					"If press 3 ------> You will see your account information \n " +		
-					"If press 4 ------> Quit \n" 	);
-
-					gui.pauseContinue();
-					gui.clearScreen();
+					System.out.println(Constants.helpDoc);
 					break;
 				default:
 					gui.clearScreen();
 					System.out.println("Invalid menu item, please try again.\n");
-					gui.pauseContinue();
 					break;
 			}
+			gui.pauseContinue();
+			gui.clearScreen();
 		}
 	}
-
 }
