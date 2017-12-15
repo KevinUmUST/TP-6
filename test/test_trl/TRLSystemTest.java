@@ -37,11 +37,29 @@ public class TRLSystemTest {
 	}
 	
 	@Test
+	public void checkOutInSuccess(){
+		assertEquals(trlSystem.checkOut("P1", "C3"), TRLReturnType.SUCCESS);
+		assertEquals(trlSystem.checkIn("P1", "C3"), TRLReturnType.SUCCESS);
+	}
+	
+	@Test
+	public void checkOutInError(){
+		assertEquals(trlSystem.checkOut("X1", "C3"), TRLReturnType.PATRON_NOT_FOUND);
+		assertEquals(trlSystem.checkIn("P1", "X3"), TRLReturnType.COPY_NOT_FOUND);
+		assertEquals(trlSystem.checkIn("P1", "C3"), TRLReturnType.UNKNOWN_ERROR);
+	}
+	
+	@Test
 	public void validatingPatronIdNotExist() throws Exception {
 		
 		TRLReturnType result=trlSystem.checkPatronID("P100"); //P100 does not exist in TRLLibrary
 		
 		assertEquals(TRLReturnType.PATRON_NOT_FOUND,result);
+	}
+	
+	@Test
+	public void canCheckInTest () {
+		assert(trlSystem.canCheckIn("P2"));
 	}
 	
 	@Test
