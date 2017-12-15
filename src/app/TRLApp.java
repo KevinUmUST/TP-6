@@ -145,7 +145,7 @@ public class TRLApp {
 	 */
 	private static void displayPatronIDandWarnings(){
 		System.out.println("PatronID: " + session.getPatronID());
-		if(session.getCanCheckOut()){
+		if(!session.getCanCheckOut()){
 			System.out.println("WARNING! Customer has holds on their account!\n");
 		}
 	}
