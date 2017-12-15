@@ -25,7 +25,8 @@ public class GUImenu {
 		menuItems.add(new GUImenuItem(1, "CHECK IN"));
 		menuItems.add(new GUImenuItem(2, "CHECK OUT"));
 		menuItems.add(new GUImenuItem(3, "PATRON ACCOUNT INFO"));
-		menuItems.add(new GUImenuItem(4, "QUIT"));
+		menuItems.add(new GUImenuItem(4, "HELP"));
+		menuItems.add(new GUImenuItem(5, "QUIT"));
 	}
 	
 	/**

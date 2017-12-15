@@ -35,8 +35,9 @@ public class TRLApp {
 	static final int CHECK_IN = 1;
 	static final int CHECK_OUT = 2;
 	static final int PATRON_INFO = 3;
-	static final int QUIT = 4;
-	static final int NUM_MENU_ITEMS = 4; // Refactor this out to top or GUI
+	static final int HELP = 4;
+	static final int QUIT = 5;
+	static final int NUM_MENU_ITEMS = 5; // Refactor this out to top or GUI
 	
 	private static GUImain gui;
 	private static TRLSession session;
@@ -85,7 +86,7 @@ public class TRLApp {
 	 * 	 
 	 * @throws InterruptedException
 	 */
-	private static void init() throws InterruptedException{
+	private static void init() throws InterruptedException{ // TODO: CodeSmell: Move Constant String values to a common location
 		System.out.println("***********************************************\n"
 				+ "            TEXTBOOK RENTAL SYSTEM\n"
 				+ "***********************************************\n"
@@ -103,7 +104,7 @@ public class TRLApp {
 				+ "Starting textbook rental system..."
 				+ "\n\n");
 		TimeUnit.SECONDS.sleep(1);	
-		//gui.clearScreen();
+		//gui.clearScreen(); // TODO: Get rid of this if not necessary
 	}
 
 	
@@ -199,11 +200,10 @@ public class TRLApp {
 			}
 			else return;
 			
-			switch(cmdInt){
+			switch(cmdInt){ // TODO: Fix code smell - remove common code from case statements and place after case block
 				case CHECK_IN:
 					gui.clearScreen();
 					System.out.println("Check In\n\n");
-					
 					
 					if(!session.getCanCheckIn()) {
 						System.out.println("Customer has no checked out copies! Cannot perform check in.\n");
@@ -222,6 +222,7 @@ public class TRLApp {
 				case QUIT:
 					gui.clearScreen();
 					break;
+					
 				case CHECK_OUT:
 					gui.clearScreen();
 					System.out.println("Check Out\n\n");
@@ -238,10 +239,17 @@ public class TRLApp {
 					gui.pauseContinue();
 					gui.clearScreen();
 					break;
+					
 				case PATRON_INFO:
 					gui.clearScreen();
 					System.out.println("Patron Account Information \n\n");
 					System.out.println(session.getPatronInfo());
+					gui.pauseContinue();
+					gui.clearScreen();
+					break;
+				case HELP: 
+					gui.clearScreen();
+					System.out.println("THIS IS THE HELP TEXT\n");
 					gui.pauseContinue();
 					gui.clearScreen();
 					break;
