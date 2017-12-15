@@ -21,8 +21,8 @@ import trl.TRLSession;
 public class TRLSessionTest {
 
 	TRLSession CUT;		// Class Under Test
-	String PatronID = "P1";
-	String CopyID	= "C1";
+	String PatronID = "P5";
+	String CopyID	= "C5";
 	String BadPatronID = "XP1";
 	String BadCopyID   = "XC1";
 	
@@ -75,13 +75,13 @@ public class TRLSessionTest {
 
 	@Test
 	public void testGetPatronInfo() {
-		assertEquals(CUT.getPatronInfo(), "Patron ID: P1\nName: Eric\nBooks Borrowing: []\nHolds: []\n");
-		assertEquals(CUT.getPatronInfo(PatronID), "Patron ID: P1\nName: Eric\nBooks Borrowing: []\nHolds: []\n");
+		assertEquals(CUT.getPatronInfo(), "Patron ID: P5\nName: Alice\nBooks Borrowing: []\nHolds: []\n");
+		assertEquals(CUT.getPatronInfo(PatronID), "Patron ID: P5\nName: Alice\nBooks Borrowing: []\nHolds: []\n");
 	}
 
 	@Test
 	public void testGetCopyInfo() {
-		assertEquals(CUT.getCopyInfo("C1"), "Copy ID: C1\nTitle: Fun with Objects\nChecked Out To: (Not Checked Out)\n");
+		assertEquals(CUT.getCopyInfo("C5"), "Copy ID: C5\nTitle: Design Patterns\nChecked Out To: (Not Checked Out)\n");
 	}
 
 	@Test
