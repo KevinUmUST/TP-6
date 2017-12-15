@@ -38,15 +38,12 @@ public class PatronTest
 	// Class Under Test
 	Patron CUT;
 	
-	private final String copyID = "TEST_COPY_ID";
-	private final String copyTitle = "TEST_COPY_TITLE";
 	private final String patronID = "TEST_PATRON_ID";
 	private final String patronName = "PATRON NAME";	
 	
 	@Test
 	public void tp1_test()
 	{
-		TRLLibrary db = new TRLLibrary();
 		Patron p;
 		String s;
 		
@@ -57,22 +54,22 @@ public class PatronTest
 		System.out.println("=============================================================");
 		System.out.println("=======================   PATRON INFO   =====================");
 		System.out.println("=============================================================");
-		System.out.println(s = (p = db.getPatron("P1")).toString());
+		System.out.println(s = (p = TRLLibrary.getPatron("P1")).toString());
 		assertEquals(s,"Patron ID: P1\nName: Eric\nBooks Borrowing: []\nHolds: []\n");
 		
 		System.out.println("=============================================================");
 		System.out.println("==============  CHECKING OUT FIRST COPY ...  ================");
 		System.out.println("=============================================================");
-		p.checkCopyOut(db.getCopy("C1"));
-		System.out.println(s = (p = db.getPatron("P1")).toString());
+		p.checkCopyOut(TRLLibrary.getCopy("C1"));
+		System.out.println(s = (p = TRLLibrary.getPatron("P1")).toString());
 		assertEquals(s,"Patron ID: P1\nName: Eric\nBooks Borrowing: [Copy ID: " + 
 					   "C1\nTitle: Fun with Objects\nChecked Out To: Eric\n]\nHolds: []\n");
 		
 		System.out.println("=============================================================");
 		System.out.println("==============  CHECKING OUT SECOND COPY ...  ===============");
 		System.out.println("=============================================================");
-		p.checkCopyOut(db.getCopy("C2"));
-		System.out.println(s = (p = db.getPatron("P1")).toString());
+		p.checkCopyOut(TRLLibrary.getCopy("C2"));
+		System.out.println(s = (p = TRLLibrary.getPatron("P1")).toString());
 		assertEquals(s,"Patron ID: P1\nName: Eric\nBooks Borrowing: [Copy ID: " +
 					   "C1\nTitle: Fun with Objects\nChecked Out To: Eric\n, Copy" +
 					   " ID: C2\nTitle: More Fun with Objects\nChecked Out To: Eric\n]\nHolds: []\n");
@@ -80,16 +77,16 @@ public class PatronTest
 		System.out.println("=============================================================");
 		System.out.println("==============  CHECKING IN SECOND COPY ...  ===============");
 		System.out.println("=============================================================");
-		p.checkCopyIn(db.getCopy("C2"));
-		System.out.println(s = (p = db.getPatron("P1")).toString());
+		p.checkCopyIn(TRLLibrary.getCopy("C2"));
+		System.out.println(s = (p = TRLLibrary.getPatron("P1")).toString());
 		assertEquals(s,"Patron ID: P1\nName: Eric\nBooks Borrowing: [Copy ID: " +
 					   "C1\nTitle: Fun with Objects\nChecked Out To: Eric\n]\nHolds: []\n");
 		
 		System.out.println("=============================================================");
 		System.out.println("==============  CHECKING IN FIRST COPY ...  ===============");
 		System.out.println("=============================================================");
-		p.checkCopyIn(db.getCopy("C1"));
-		System.out.println(s = (p = db.getPatron("P1")).toString());
+		p.checkCopyIn(TRLLibrary.getCopy("C1"));
+		System.out.println(s = (p = TRLLibrary.getPatron("P1")).toString());
 		assertEquals(s,"Patron ID: P1\nName: Eric\nBooks Borrowing: []\nHolds: []\n");
 		
 		System.out.println("Patron Test - TP_1: Exploration and Beginning Implementation");

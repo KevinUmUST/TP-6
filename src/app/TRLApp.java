@@ -3,8 +3,6 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import gui.GUImain;
 import trl.Constants;
-import trl.Copy;
-import trl.Patron;
 import trl.TRLReturnType;
 import trl.TRLSession;
 
@@ -78,28 +76,9 @@ public class TRLApp {
 	 * 	 
 	 * @throws InterruptedException
 	 */
-	private static void init() throws InterruptedException{ // TODO: CodeSmell: Move Constant String values to a common location
+	private static void init() throws InterruptedException{
 		System.out.println(Constants.mainHeader);
 		TimeUnit.SECONDS.sleep(1);	
-		//gui.clearScreen(); // TODO: Get rid of this if not necessary
-	}
-
-	
-	/**
-	 * 	requestPatronID
-	 * 
-	 * @return	Returns the Patron ID supplied by the user if the user provided
-	 *  		a valid ID.
-	 * 
-	 * @throws IOException
-	 */
-	private static String requestPatronID() throws IOException{
-		System.out.println("Please enter the Patron's ID.");
-		String id;
-		while(!session.validatePatron(id = gui.getUserInput())){
-			System.out.println(Constants.invalidPatronIDMessage);
-		}
-		return id;
 	}
 	
 	/**

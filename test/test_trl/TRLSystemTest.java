@@ -21,8 +21,6 @@ import trl.TRLSystem;
  *
  */
 public class TRLSystemTest { 
-
-	private Patron patron;
 	private TRLSystem trlSystem;
 	
 	@Before
