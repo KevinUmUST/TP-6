@@ -48,6 +48,7 @@ public class TRLLibrary {
 
 		
 		getPatron("P2").addHold(new Hold(getCopy("C1")));
+		getPatron("P2").checkCopyOut(getCopy("C1"));
 	}
 
 	/**
