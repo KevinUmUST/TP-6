@@ -4,6 +4,8 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
 import gui.GUImain;
+import trl.Copy;
+import trl.Patron;
 import trl.TRLReturnType;
 import trl.TRLSession;
 
@@ -247,7 +249,27 @@ public class TRLApp {
 					break;
 				case HELP: 
 					gui.clearScreen();
-					System.out.println("THIS IS THE HELP TEXT\n");
+					System.out.println("Help Documentation\n\n" + 
+					"Avaliable Patron: \n" +
+							"ID = P1 (Eric)\n" +
+							"ID = P2 (Laey McLateFace)\n" +
+							"ID = P3 (John)\n" +
+							"ID = P4 (Sarah)\n" +
+							"ID = P5 (Alice)\n\n\n" + 
+					
+					"Avaliable Copies: \n" +
+					"ID = C1 (Fun with Objects)\n" +
+					"ID = C2 (More Fun with Objects)\n" +
+					"ID = C3 (Clean Code)\n" +
+					"ID = C4 (The Mythical Man-Month)\n" +
+					"ID = C5 (Design Patterns)\n" +
+					"ID = C6 (Software Engineering)\n" +
+					"ID = C7 (Agile Principles)\n" +
+					"ID = C8 (Repaid Development)\n" +
+					"ID = C9 (Beautiful Code)\n" +
+					"ID = C10 (Pro Git)\n" );
+					
+
 					gui.pauseContinue();
 					gui.clearScreen();
 					break;
