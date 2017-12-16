@@ -95,7 +95,11 @@ public class TRLSystem {
 			System.out.println("Operation Complete.\n");
 			return TRLReturnType.SUCCESS;
 		}
-		else return TRLReturnType.UNKNOWN_ERROR;
+		else {
+			System.out.println("Check out failed");
+			return TRLReturnType.UNKNOWN_ERROR;
+
+		}
 	}
 
 	/**

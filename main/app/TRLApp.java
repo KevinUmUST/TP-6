@@ -163,11 +163,15 @@ public class TRLApp {
 										   "copies! Cannot perform check in.\n");
 					}
 					else {
-						while(session.checkInCopy(session.getPatronID(), 
-								requestCopyID()) != TRLReturnType.SUCCESS){
 						gui.clearScreen();
+						TRLReturnType value;
 						System.out.println("Check In\n\n");
-						System.out.println(Constants.invalidCopyIDMessage);
+						if((value=session.checkInCopy(session.getPatronID(), 
+								requestCopyID())) == TRLReturnType.UNKNOWN_ERROR) {
+							System.out.println("Copy is not checked out to the current patron.");
+						}
+						else if(value == TRLReturnType.COPY_NOT_FOUND) {
+							System.out.println(Constants.invalidCopyIDMessage);
 						}
 					}
 					break;
@@ -180,11 +184,15 @@ public class TRLApp {
 					if(!session.getCanCheckOut()){
 						System.out.println("Customer has holds! Cannot perform check out.\n");
 					}
-					else{
-						while(session.checkOutCopy(session.getPatronID(), 
-								requestCopyID()) != TRLReturnType.SUCCESS){
-							gui.clearScreen();
-							System.out.println("Check Out\n\n");
+					else {
+						gui.clearScreen();
+						System.out.println("Check Out\n\n");
+						TRLReturnType value;
+						if((value=session.checkOutCopy(session.getPatronID(), 
+								requestCopyID())) == TRLReturnType.UNKNOWN_ERROR) {
+							System.out.println("Copy is already checked out to someone else");
+						}
+						else if(value == TRLReturnType.COPY_NOT_FOUND) {
 							System.out.println(Constants.invalidCopyIDMessage);
 						}
 					}
