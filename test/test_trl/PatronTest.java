@@ -37,65 +37,22 @@ public class PatronTest
 {
 	// Class Under Test
 	Patron CUT;
-	
+
+	Patron CUT2;
+	private final String copyID = "TEST_COPY_ID";
+	private final String copyTitle = "TEST_COPY_TITLE";
 	private final String patronID = "TEST_PATRON_ID";
 	private final String patronName = "PATRON NAME";	
-	
-	@Test
-	public void tp1_test()
-	{
-		Patron p;
-		String s;
-		
-		System.out.println("Patron Test - TP_1: Exploration and Beginning Implementation");
-		System.out.println("Start of Test");
-		System.out.println("\n");
-		
-		System.out.println("=============================================================");
-		System.out.println("=======================   PATRON INFO   =====================");
-		System.out.println("=============================================================");
-		System.out.println(s = (p = TRLLibrary.getPatron("P1")).toString());
-		assertEquals(s,"Patron ID: P1\nName: Eric\nBooks Borrowing: []\nHolds: []\n");
-		
-		System.out.println("=============================================================");
-		System.out.println("==============  CHECKING OUT FIRST COPY ...  ================");
-		System.out.println("=============================================================");
-		p.checkCopyOut(TRLLibrary.getCopy("C1"));
-		System.out.println(s = (p = TRLLibrary.getPatron("P1")).toString());
-		assertEquals(s,"Patron ID: P1\nName: Eric\nBooks Borrowing: [Copy ID: " + 
-					   "C1\nTitle: Fun with Objects\nChecked Out To: Eric\n]\nHolds: []\n");
-		
-		System.out.println("=============================================================");
-		System.out.println("==============  CHECKING OUT SECOND COPY ...  ===============");
-		System.out.println("=============================================================");
-		p.checkCopyOut(TRLLibrary.getCopy("C2"));
-		System.out.println(s = (p = TRLLibrary.getPatron("P1")).toString());
-		assertEquals(s,"Patron ID: P1\nName: Eric\nBooks Borrowing: [Copy ID: " +
-					   "C1\nTitle: Fun with Objects\nChecked Out To: Eric\n, Copy" +
-					   " ID: C2\nTitle: More Fun with Objects\nChecked Out To: Eric\n]\nHolds: []\n");
-		
-		System.out.println("=============================================================");
-		System.out.println("==============  CHECKING IN SECOND COPY ...  ===============");
-		System.out.println("=============================================================");
-		p.checkCopyIn(TRLLibrary.getCopy("C2"));
-		System.out.println(s = (p = TRLLibrary.getPatron("P1")).toString());
-		assertEquals(s,"Patron ID: P1\nName: Eric\nBooks Borrowing: [Copy ID: " +
-					   "C1\nTitle: Fun with Objects\nChecked Out To: Eric\n]\nHolds: []\n");
-		
-		System.out.println("=============================================================");
-		System.out.println("==============  CHECKING IN FIRST COPY ...  ===============");
-		System.out.println("=============================================================");
-		p.checkCopyIn(TRLLibrary.getCopy("C1"));
-		System.out.println(s = (p = TRLLibrary.getPatron("P1")).toString());
-		assertEquals(s,"Patron ID: P1\nName: Eric\nBooks Borrowing: []\nHolds: []\n");
-		
-		System.out.println("Patron Test - TP_1: Exploration and Beginning Implementation");
-		System.out.println("End of Test");
-	}
+	private final String patronID2 = "TEST_PATRON_ID2";
+	private final String patronName2 = "PATRON NAME2";	
+	private Copy c1, c2;
 	
 	@Before
 	public void setUp() {
 		CUT = new Patron(patronID, patronName);
+		CUT2 = new Patron(patronID2, patronName2);
+		c1 = new Copy("T_C1", "T_C1");
+		c2 = new Copy("T_C2", "T_C2");
 	}
 	
 	@Test
@@ -105,6 +62,53 @@ public class PatronTest
 		assertEquals(CUT.getPatronID(), patronID);
 		assertEquals(CUT.getName(), patronName);
 	}
+	
+	@Test
+	public void validatingPatronCheckedOutZeroCopies() throws Exception {
+		int result=CUT.numCheckedOutCopies();
+		assertEquals(0,result);
+	}
+	
+	@Test
+	public void validatingPatronCanCheckOut() throws Exception{
+		boolean result=CUT.checkCopyOut(c1);
+		assertEquals(true,result);
+		CUT.checkCopyIn(c1);
+	}
+	
+	@Test
+	public void validatingPatronCannotCheckOutCheckedOutCopies() throws Exception{
+		CUT.checkCopyOut(c1);
+		boolean result=CUT.checkCopyOut(c1);
+		assertEquals(false,result);
+	}
+	
+	@Test
+	public void validatingPatronCanCheckIn() throws Exception{
+		CUT.checkCopyOut(c1);
+		boolean result=CUT.checkCopyIn(c1);
+		assertEquals(true,result);
+	}
+	
+	@Test
+	public void validatingPatronCannotCheckInWhenPatronHasNoCheckedOutCopy() throws Exception{
+		CUT.setCopiesOut(null);
+		c1.setOutTo(null);
+		boolean result=CUT.checkCopyIn(c1);
+		assertEquals(false,result);
+
+		
+	}
+	
+	@Test
+	public void printPatronInfoTest() throws Exception{
+	String expectedResult= "Patron ID: " + CUT.getPatronID() + "\nName: " + CUT.getName() + "\nBooks Borrowing: " + CUT.getCopiesOut()+ "\nHolds: []\n";
+	String actultResult=CUT.toString();
+	assertEquals(expectedResult,actultResult);
+	}
+	
+	
+	
 	
 	@Test
 	public void getset_test(){
@@ -124,10 +128,9 @@ public class PatronTest
 		assert(CUT.getCopiesOut() instanceof ArrayList<?>);
 
 		// Copies Out List
-		Copy c1, c2;
 		ArrayList<Copy> copies = new ArrayList<Copy>();
-		copies.add(c1 = new Copy("T_C1", "T_C1"));
-		copies.add(c2 = new Copy("T_C2", "T_C2"));
+		copies.add(c1);
+		copies.add(c2);
 		CUT.setCopiesOut(copies);
 		assert(CUT.getCopiesOut().get(0).equals(c1));
 		assert(CUT.getCopiesOut().get(1).equals(c2));

@@ -33,8 +33,10 @@ public class TRLLibraryTest {
 	
 	@Test
 	public void checkout_test(){
-		assertTrue(TRLLibrary.checkOut("P3", "C3"));
-		TRLLibrary.checkIn("P3", "C3");
+		assertFalse(TRLLibrary.checkOut("P2", "C1"));
+		assertTrue(TRLLibrary.checkIn("P2", "C1"));
 	}
+
+
 
 }
