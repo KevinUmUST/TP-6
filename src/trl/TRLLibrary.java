@@ -13,6 +13,7 @@ package trl;
  *
  */
 import java.util.HashMap;
+import java.util.Iterator;
 import java.util.Map;
 
 public class TRLLibrary {
@@ -29,7 +30,7 @@ public class TRLLibrary {
 		copyStore = new HashMap<String, Copy>();
 
 		patronStore.put("P1", new Patron("P1", "Eric"));
-		patronStore.put("P2", new Patron("P2", "Latey McLateFace"));
+		patronStore.put("P2", new Patron("P2", "McLate"));
 		patronStore.put("P3", new Patron("P3", "John"));
 		patronStore.put("P4", new Patron("P4", "Sarah"));
 		patronStore.put("P5", new Patron("P5", "Alice"));
@@ -94,6 +95,15 @@ public class TRLLibrary {
 		else return false;
 	}
 	
+	/**
+	 *  checkIn
+	 * 
+	 *  checks in a patron's held copy
+	 *  
+	 * @param patronID
+	 * @param copyID
+	 * @return
+	 */
 	public static boolean checkIn(String patronID, String copyID) {
 		Patron p = getPatron(patronID);
 		Copy c = getCopy(copyID);
@@ -115,12 +125,105 @@ public class TRLLibrary {
 	 * 						false if Patron does not have a hold
 	 */
 	public static boolean hasHold(String patronID){
+		if(getPatron(patronID) == null)
+			return false;
 		return (getPatron(patronID).numHolds() != 0);
 	}
 	
+	/**
+	 *  hasCopy
+	 *  
+	 * @param patronID
+	 * @return true if patron has copy checked out; false otherwise
+	 */
 	public static boolean hasCopy(String patronID) {
 		return (getPatron(patronID).numCheckedOutCopies()!=0);
 	}
-	
 
+	/**
+	 * runInventoryReport
+	 * 
+	 * gives the list of missing books and other important statistics for the
+	 * past year.  These statistics include number and value of copies added to
+	 * inventory, number and value of copies sold to students, number and value
+	 * of copies withdrawn, and total number and value of all copies in current
+	 * Rental inventory. 
+	 * 
+	 */
+	public static void runInventoryReport(){
+	
+		int num = 0;
+		int numHolds = 0;
+		int numPatronHolds = 0;
+		int numPatrons = patronStore.size();
+		int numCopies  = copyStore.size();
+		
+		System.out.println("\n\n===========================================================\n");
+		System.out.println("	STATISTICS\n");
+		System.out.println("===========================================================\n");
+		
+		System.out.println("Total Number of Copies: " + numCopies);
+		System.out.println("Total Number of Patrons: " + numPatrons);
+		System.out.println("");
+		System.out.println("Patrons with holds: " + numPatronHolds + "/" + numPatrons);
+		System.out.println("Copies Overdue: " + numHolds + "/" + numCopies);
+		System.out.println("");
+	
+		System.out.println("===========================================================\n");
+		System.out.println("	PATRON INFORMATION\n");
+		System.out.println("===========================================================\n\n");
+		Iterator it	= patronStore.entrySet().iterator();
+		System.out.println("Patron\tName\tID\tChecked Out\tHolds\n");
+		while (it.hasNext()) {
+	        Map.Entry<String, Patron> pair = (Map.Entry<String, Patron>)it.next();
+	        System.out.println( pair.getKey() + "\t" +
+								pair.getValue().getName() + "\t" +
+								pair.getValue().getPatronID() + "\t" +
+								pair.getValue().numCheckedOutCopies() + "\t\t" +
+								pair.getValue().numHolds());
+	        if((num = pair.getValue().numHolds()) > 0){
+	        	numHolds += num;
+	        	numPatronHolds++;
+	        }
+	    }
+		
+		System.out.println("\n\n===========================================================\n");
+		System.out.println("	COPY INFORMATION\n");
+		System.out.println("===========================================================\n\n");
+		it	= copyStore.entrySet().iterator();
+		System.out.println("Copy\tOut To\tID\tTitle\n");
+		while (it.hasNext()) {
+	        Map.Entry<String, Copy> pair = (Map.Entry<String, Copy>)it.next();
+	        String outTo;
+	        if (pair.getValue().getOutTo() == null)
+	        	outTo = "N/A";
+	        else outTo = pair.getValue().getOutTo().getName();
+	        System.out.println( pair.getKey() + "\t" + 
+								outTo + "\t" +
+								pair.getValue().getCopyID() + "\t" +
+								pair.getValue().getTitle());
+	    }
+		
+		System.out.println("\n\n===========================================================\n");
+		System.out.println("	MISSING COPIES\n");
+		System.out.println("===========================================================\n\n");
+		it	= copyStore.entrySet().iterator();
+		System.out.println("Copy\tOut To\tID\tTitle\n");
+		while (it.hasNext()) {
+	        Map.Entry<String, Copy> pair = (Map.Entry<String, Copy>)it.next();
+	        String outTo;
+	        if (pair.getValue().getOutTo() == null){
+	        	break;
+	        }
+	        else {
+	        	outTo = pair.getValue().getOutTo().getName();
+	        	System.out.println( pair.getKey() + "\t" + 
+								outTo + "\t" +
+								pair.getValue().getCopyID() + "\t" +
+								pair.getValue().getTitle());
+	        }
+	    }
+	}
 }
+
+

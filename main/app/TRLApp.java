@@ -3,6 +3,7 @@ import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 import gui.GUImain;
 import trl.Constants;
+import trl.TRLLibrary;
 import trl.TRLReturnType;
 import trl.TRLSession;
 
@@ -196,6 +197,10 @@ public class TRLApp {
 				case Constants.HELP: 
 					gui.clearScreen();
 					System.out.println(Constants.helpDoc);
+					break;
+				case Constants.INVENTORY_REPORT:
+					gui.clearScreen();
+					TRLLibrary.runInventoryReport();
 					break;
 				default:
 					gui.clearScreen();

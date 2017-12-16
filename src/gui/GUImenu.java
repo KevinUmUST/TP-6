@@ -29,6 +29,7 @@ public class GUImenu {
 		menuItems.add(new GUImenuItem(Constants.PATRON_INFO,
 				"PATRON ACCOUNT INFO"));
 		menuItems.add(new GUImenuItem(Constants.HELP, "HELP"));
+		menuItems.add(new GUImenuItem(Constants.INVENTORY_REPORT, "INVENTORY REPORT"));
 		menuItems.add(new GUImenuItem(Constants.QUIT, "QUIT"));
 	}
 	

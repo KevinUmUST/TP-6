@@ -5,8 +5,9 @@ final public class Constants {
 	public static final int CHECK_OUT = 2;
 	public static final int PATRON_INFO = 3;
 	public static final int HELP = 4;
-	public static final int QUIT = 5;
-	public static final int NUM_MENU_ITEMS = 5;
+	public static final int INVENTORY_REPORT = 5;
+	public static final int QUIT = 6;
+	public static final int NUM_MENU_ITEMS = 6;
 	
 	public static final String mainHeader = 
 			 ("***********************************************\n"
