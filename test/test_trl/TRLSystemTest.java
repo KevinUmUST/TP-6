@@ -59,7 +59,9 @@ public class TRLSystemTest {
 	
 	@Test
 	public void canCheckInTest () {
-		assert(trlSystem.canCheckIn("P2"));
+		assertEquals(trlSystem.checkOut("P1", "C3"), TRLReturnType.SUCCESS);
+		assert(trlSystem.canCheckIn("P1"));
+		assertEquals(trlSystem.checkIn("P1", "C3"), TRLReturnType.SUCCESS);
 	}
 	
 	@Test

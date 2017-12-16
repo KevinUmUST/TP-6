@@ -158,9 +158,14 @@ public class TRLLibrary {
 		int numPatrons = patronStore.size();
 		int numCopies  = copyStore.size();
 		
-		System.out.println("\n\n===========================================================\n");
-		System.out.println("	STATISTICS\n");
-		System.out.println("===========================================================\n");
+		System.out.println("===========================================================");
+		System.out.println("              TEXTBOOK RENTAL LIBRARY");
+		System.out.println("                  INVENTORY REPORT");
+		System.out.println("===========================================================");
+
+		System.out.println("\n");
+		System.out.println("	STATISTICS");
+		System.out.println("===========================================================");
 		
 		System.out.println("Total Number of Copies: " + numCopies);
 		System.out.println("Total Number of Patrons: " + numPatrons);
@@ -169,9 +174,9 @@ public class TRLLibrary {
 		System.out.println("Copies Overdue: " + numHolds + "/" + numCopies);
 		System.out.println("");
 	
-		System.out.println("===========================================================\n");
-		System.out.println("	PATRON INFORMATION\n");
-		System.out.println("===========================================================\n\n");
+		System.out.println("\n");
+		System.out.println("	PATRON INFORMATION");
+		System.out.println("===========================================================");
 		Iterator it	= patronStore.entrySet().iterator();
 		System.out.println("Patron\tName\tID\tChecked Out\tHolds\n");
 		while (it.hasNext()) {
@@ -187,9 +192,9 @@ public class TRLLibrary {
 	        }
 	    }
 		
-		System.out.println("\n\n===========================================================\n");
-		System.out.println("	COPY INFORMATION\n");
-		System.out.println("===========================================================\n\n");
+		System.out.println("\n");
+		System.out.println("	COPY INFORMATION");
+		System.out.println("===========================================================");
 		it	= copyStore.entrySet().iterator();
 		System.out.println("Copy\tOut To\tID\tTitle\n");
 		while (it.hasNext()) {
@@ -204,9 +209,9 @@ public class TRLLibrary {
 								pair.getValue().getTitle());
 	    }
 		
-		System.out.println("\n\n===========================================================\n");
-		System.out.println("	MISSING COPIES\n");
-		System.out.println("===========================================================\n\n");
+		System.out.println("\n");
+		System.out.println("	MISSING COPIES");
+		System.out.println("===========================================================");
 		it	= copyStore.entrySet().iterator();
 		System.out.println("Copy\tOut To\tID\tTitle\n");
 		while (it.hasNext()) {
@@ -225,5 +230,3 @@ public class TRLLibrary {
 	    }
 	}
 }
-
-
