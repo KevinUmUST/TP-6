@@ -92,12 +92,7 @@ public class PatronTest
 	
 	@Test
 	public void validatingPatronCannotCheckInWhenPatronHasNoCheckedOutCopy() throws Exception{
-		CUT.setCopiesOut(null);
-		c1.setOutTo(null);
-		boolean result=CUT.checkCopyIn(c1);
-		assertEquals(false,result);
-
-		
+		assertEquals(false, CUT.checkCopyIn(c1));
 	}
 	
 	@Test
@@ -106,9 +101,6 @@ public class PatronTest
 	String actultResult=CUT.toString();
 	assertEquals(expectedResult,actultResult);
 	}
-	
-	
-	
 	
 	@Test
 	public void getset_test(){

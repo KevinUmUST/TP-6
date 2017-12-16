@@ -76,8 +76,14 @@ public class Patron
 	}
 
 	public boolean checkCopyIn(Copy c)
-	{		
-		if(c.getOutTo().equals(this))
+	{	
+		if(c == null){
+			return false;
+		}
+		else if(c.getOutTo() == null){
+			return false;
+		}
+		else if(c.getOutTo().equals(this))
 		{
 			c.setOutTo(null);
 			copiesOut.remove(c);

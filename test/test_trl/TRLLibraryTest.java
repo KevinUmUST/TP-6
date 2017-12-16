@@ -37,6 +37,8 @@ public class TRLLibraryTest {
 		assertTrue(TRLLibrary.checkIn("P2", "C1"));
 	}
 
-
-
+	@Test
+	public void runInventoryReportTest(){
+		TRLLibrary.runInventoryReport();
+	}
 }
